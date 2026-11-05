@@ -63,6 +63,16 @@ else
         seed = seedOverride, randomSeed = session.State.RandomSeed });
 }
 
+// #195 X3 (opt-in, "ailog"): every AI seat pass's own log (AiTurnDecided.Lines), one receipt line per pass, so a seat
+// that is interrupted by a human battle and resumed shows both passes.
+if (options.Contains("ailog"))
+    session.EventsPublished += events =>
+    {
+        foreach (var d in events.OfType<IC2.Engine.Ai.AiTurnDecided>())
+            Emit(new { kind = "ai", nation = d.NationId, issued = d.CommandsIssued, rejected = d.CommandsRejected,
+                cap = d.HitActionCap, lines = d.Lines, turn = session.State.Calendar.TurnIndex });
+    };
+
 int step = 0;
 int fresh = 0;
 foreach (var raw in File.ReadLines(commands))

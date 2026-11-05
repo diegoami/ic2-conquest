@@ -66,13 +66,15 @@ Short names:
 
 | area | rows | MATCH | DIFF | AMB | MISSING | APPR | AUTH | UNAUD |
 |---|---|---|---|---|---|---|---|---|
-| A: seat loop, scheduling, draws, authored automation | 43 | 11 | 4 | 14 | 0 | 3 | 8 | 3 |
-| B: economy, recruitment, mercenaries, supply | 35 | 16 | 3 | 9 | 0 | 1 | 2 | 4 |
-| C: army phase | 34 | 19 | 2 | 5 | 1 | 1 | 2 | 4 |
-| D: fleets | 33 | 17 | 2 | 10 | 0 | 0 | 2 | 2 |
+| A: seat loop, scheduling, draws, authored automation | 43 | 12 | 4 | 13 | 0 | 3 | 8 | 3 |
+| B: economy, recruitment, mercenaries, supply | 35 | 17 | 3 | 9 | 0 | 1 | 2 | 3 |
+| C: army phase | 34 | 20 | 2 | 4 | 1 | 1 | 2 | 4 |
+| D: fleets | 33 | 18 | 2 | 9 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
-| F: tactical AI and battle transitions | 43 | 29 | 1 | 4 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **112** | **15** | **55** | **2** | **7** | **22** | **16** |
+| F: tactical AI and battle transitions | 43 | 30 | 1 | 3 | 0 | 1 | 7 | 1 |
+| **total** | **229** | **117** | **15** | **51** | **2** | **7** | **22** | **15** |
+
+Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical).
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -182,8 +184,8 @@ area, its cross-reference is in the X list above.
 | A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only with Tactical human battles, a living human seat and no watch mode (GameSession 2398) | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
 | A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences) | AMB | 10 own-capital stays open | mirror |
 | A11 | Phase-mode flag DAT_004a0340 (0 armies, 1 fleets) | F31C/F608 | none | i | UNAUD | Readers not traced | none |
-| A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake | AMB | **X3**; no interruption under Instant | mirror |
-| A13 | The replayed pass draws fresh Random values and reruns the economy | FA20 second call | named streams per (nation, turn) | ii (remake code) | UNAUD | **X3**: the same draws repeat | none |
+| A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake; iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant, no replay: 3 of 5 seats differ) | **X3**; no interruption under Instant | mirror |
+| A13 | The replayed pass draws fresh Random values and reruns the economy | FA20 second call | named streams per (nation, turn) | ii (remake code) | UNAUD | **X3**: the same draws repeat; x3: no roll fired in 30 runs, still unmeasured | none |
 | A14 | Capital defence continues with a human battle pending | EFC8 under the flag | AiCapitalDefence continuePending (T277) | i–iii | AMB | **X5** | mirror |
 | A15 | Which battle kinds set the flag (siege of a human city, naval) | 437DE4 callers | gate: AttackArmy on a human army only | i | UNAUD | Interrupts may be missing | none |
 | A16 | Stale walk word carried from E84C into the same army's EBE8 | F31C/E84C/EBE8/DB38/D9A8 | OriginalArmyIntermediateSearchFailed (T276/T277) | iv (v0.9.4 recheck: Numidia t37, Celtiberia t39–40) | MATCH | Other carry-overs not measured | mirror |
@@ -252,7 +254,7 @@ area, its cross-reference is in the X list above.
 | B30 | Trade swap, one forward pass | FB7C | OriginalTradeSwapPass | iv (10 → 0) | MATCH | — | mirror |
 | B31 | Loop-1 trade skip for the war leader | FB7C | handled by T274 (see E14) | ii | AMB | Not re-measured | mirror |
 | B32 | AI embark over capacity | F8FC via B79C | ArmyTransportTrim (T224) | iii | APPR | Not re-measured | none |
-| B33 | Seat replay reruns the economy | FA20 | AiTurn re-entered | ii | UNAUD | **X3** | none |
+| B33 | Seat replay reruns the economy | FA20 | AiTurn re-entered | ii; iv (x3: pass-1 budgets identical in 15/15 runs, pass 2 reruns the economy) | MATCH (Tactical) | **X3** | none |
 | B34 | Fleet support and repair | E5DC/F7E4 | AutomaticResupply.ForFleet | iv synthetic 23/23 | MATCH (synthetic) | No natural-play comparison | mirror |
 | B35 | Designed economy (Improved) | none | AiEconomyPhase.Propose | iii | AUTH | — | mirror |
 
@@ -261,7 +263,7 @@ area, its cross-reference is in the X list above.
 | id | behaviour | original | remake | levels | cat | difference / uncertainty | tests |
 |---|---|---|---|---|---|---|---|
 | C01 | Army loop: table order, count at entry, one army at a time | F31C | OriginalArmyOrder; AiTurn loop | iv (e20a6488: 0/156 out of order) | MATCH | — | mirror |
-| C02 | Battle with a human: remaining armies skipped, seat replayed | 0x4A0B7C; FA20 | AiPhaseBattleGate (T256) | i, ii; iii (Tactical) | AMB / APPR (Instant) | **X3, X6** | mirror |
+| C02 | Battle with a human: remaining armies skipped, seat replayed | 0x4A0B7C; FA20 | AiPhaseBattleGate (T256) | i, ii; iii (Tactical); iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant) | **X3, X6** | mirror |
 | C03 | Capital-defence threat list (≤ 9, region, radius 19/9) | EFC8, EB18/EB9C | AiCapitalDefence.Threats | iv common cases (05b02936) | MATCH | The 9-cap and ties seen only in emulation | mirror |
 | C04 | Responders (order, offence skip, limit, non-war rule) | EFC8 | Run, CommittedToOffence, NearestThreat | iv (decisions report) | MATCH | Dispatch counted without a command: not isolated | mirror |
 | C05 | Responder destination and arrival attack | EFC8 → DBA8 → D734 | Destination, ArrivalAttack (T249) | iv (17 → 0) | MATCH | — | mirror |
@@ -328,7 +330,7 @@ area, its cross-reference is in the X list above.
 | D27 | AI fleet merge | 450B30 | MergeFleets | ii, iii | AMB | Never exercised; 16-bit wrap vs saturation | mirror |
 | D28 | Embark overflow | F8FC | PartitionWholeUnits | ii + controls | MATCH (branch) | Other branches unproved | none |
 | D29 | Reachability: any fleet makes every target reachable | CAB4 | ClassicalArmyNavigation | ii, iii | MATCH (code) | No iv | none |
-| D30 | Fleet phase still runs in an interrupted seat | FA20 0x44FA56 | ArmyPhaseInterrupted → OriginalFleetPhase | ii, iii | AMB | **X3** | none |
+| D30 | Fleet phase still runs in an interrupted seat | FA20 0x44FA56 | ArmyPhaseInterrupted → OriginalFleetPhase | ii, iii; iv (x3: pass 1 runs the fleet phase; S08 fleet 0 to port then stored route, as the original) | MATCH (Tactical) | **X3** | none |
 | D31 | Weather ignored by AI choices; rough sea counts as sea | storm pass; MapCode | IsRoughSea → 1 | iv for storm damage | MATCH | Ignorance inferred | discr |
 | D32 | Elimination removes fleets and carried armies | R/2026-10-09 elimination | conquest cascade | ii; iii | AMB | Not compared | mirror |
 | D33 | The AI never scuttles, splits, transfers or joins fleets with a human | none documented | none found | i | UNAUD | Absence not stated by research | none |
@@ -354,7 +356,7 @@ area, its cross-reference is in the X list above.
 | E15 | Trade swap single forward pass | FB7C | OriginalTradeSwapPass | iv | MATCH | — | mirror |
 | E16 | Swap drops a human partner to −8 | FB7C | MaySwapTradePartner | i–iii | AMB | Not observed in either game | none |
 | E17 | Phase order inside a seat | FA20 | AiTurn.Run | ii | AMB | **X1** | none |
-| E18 | Seat replay: FB7C runs again with fresh rolls | FA20 0x44FA56 | streams keyed by (nation, turn) | iv original | DIFF | **X3** | none |
+| E18 | Seat replay: FB7C runs again with fresh rolls | FA20 0x44FA56 | streams keyed by (nation, turn) | iv original | DIFF | **X3**; x3: no roll fired in 30 runs, the remake side unmeasured | none |
 | E19 | The AI never offers or writes peace over a war | FB7C | no peace branch | iv | MATCH | — | mirror |
 | E20 | Offer roll at a human turn start | 452034 | PendingOfferSystem | iii; iv for the rate (v0.5.0) | MATCH | Rate checked at v0.5.0 only | mirror |
 | E21 | Offer shown as an OK-only box | StartTurn 0x45AC5C | event | iv at v0.5.0 (no box) | AMB | Display not rechecked | none |
@@ -420,7 +422,7 @@ commit, and no later commit touches `Battle/Tactical/General/*`. In this table, 
 | F31 | Random source | global | SplitMix streams | i | AUTH (designed) | = A19 | none |
 | F32 | Write-back | TBattleOver_OK | TacticalWriteBack | i–iv | MATCH | — | discr |
 | F33 | Post-battle peace gate on the board | TBattleOver_OK → TBattlePols | Conclude | i–iv (hook 77/77) | MATCH | Barbarian exclusion authored; compare E28 for the instant path | discr |
-| F34 | AI attack on a human army interrupts the seat | FA20, 451FDC, F31C, 0x4A0B7C | PlaySeatTurn/ResumeAiLap | i, ii; iii | AMB | **X3** | mirror |
+| F34 | AI attack on a human army interrupts the seat | FA20, 451FDC, F31C, 0x4A0B7C | PlaySeatTurn/ResumeAiLap | i, ii; iii; iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant) | **X3** | mirror |
 | F35 | Capital defence while a battle is pending | EFC8 | AiPhaseBattleGate | i–iii | AMB | **X5** | mirror |
 | F36 | Human attack in their own turn declares war implicitly | 44AEE4 | TryOpenTacticalBattle | i–iii | MATCH | — | mirror |
 | F37 | "Board cannot host" fallback | none | CanBeFought | iii | AUTH | Unreachable under the 20-unit cap | none |
