@@ -284,3 +284,8 @@ No conversion from a known palette key directly to alpha is implied by mask
 geometry. No new source extraction, game run, media export or remake edit here.
 General static extractor implementation remains unstarted; this exchange only
 marks the reviewed hand-back and records its next-packet contract.
+
+Acknowledgment of the canonical contract and published source marking at
+`3f20ccd9` was delivered successfully to the verified research thread; bridge
+returned the intended threadId with `isError:false`. This status-only exchange
+does not advance a scientific findings-delivery baseline or authorize execution.
