@@ -8,6 +8,12 @@ distributed with the tool. The separate research session qualified tool 1.0.1 at
 `1544d666c45004f1eda362cb84a4701e0e4143d2` for this supported static profile.
 Actual remake integration, native composition and runtime packaging remain separate.
 
+Acceptance is promoted by
+[Research PR220](https://github.com/diegoami/imperial-conquest-2-research/pull/220)
+at `71414df8c96b702a8d8bcb7a34bee6b864e4410d`:
+[review](https://github.com/diegoami/imperial-conquest-2-research/blob/71414df8c96b702a8d8bcb7a34bee6b864e4410d/docs/progress/research218-extractor-review.md)
+and [scalar receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/71414df8c96b702a8d8bcb7a34bee6b864e4410d/docs/data/research218-extractor-review-v1.json).
+
 Reviewed tool SHA-256:
 `5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`.
 
