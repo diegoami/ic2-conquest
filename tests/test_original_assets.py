@@ -222,6 +222,12 @@ class ResourceTests(unittest.TestCase):
         with self.assertRaises(a.Invalid):
             a.pe_resources(data)
 
+    def test_resource_overlap_and_duplicate_identity(self):
+        data = bytearray(make_pe([(10, 1, 0, b"a"), (2, 1, 0, b"b")]))
+        data[512 + 24:512 + 28] = data[512 + 16:512 + 20]
+        with self.assertRaises(a.Invalid):
+            a.pe_resources(data)
+
     def test_dfm_binary_nested_and_duplicate_guard(self):
         data = b"TPF0" + obj("TMain", "Main", children=[obj("TImageList", "List", [("Bitmap", binary(b"blob"))])])
         result = a.DFMReader(data).parse()
@@ -271,6 +277,25 @@ class ResourceTests(unittest.TestCase):
         self.assertEqual(meta[0]["height"], 2)
         self.assertEqual(meta[0]["hotspot"], [1, 1])
         self.assertEqual(struct.unpack_from("<HH", result, 10), (1, 1))
+        truncated = make_pe([(1, 1, 0, leaf[:-1]), (12, 55, 0,
+            struct.pack("<HHH", 0, 2, 1) + struct.pack("<HHHHIH", 2, 4, 1, 1, len(leaf) - 1, 1))])
+        refs = a.pe_resources(truncated)
+        with self.assertRaises(a.Invalid):
+            a.native_group(next(r for r in refs if r["type"] == 12), refs, truncated)
+        group_wrong = make_pe([(1, 1, 0, leaf), (12, 55, 0,
+            struct.pack("<HHH", 0, 2, 1) + struct.pack("<HHHHIH", 3, 4, 1, 1, len(leaf), 1))])
+        refs = a.pe_resources(group_wrong)
+        with self.assertRaises(a.Invalid):
+            a.native_group(next(r for r in refs if r["type"] == 12), refs, group_wrong)
+
+    def test_malformed_asset_fails_validation(self):
+        form = b"TPF0" + obj("TUnitMap", "UnitMap", children=[
+            obj("TImageList", "ArmiesList", [("Bitmap", binary(b"truncated"))])])
+        data = make_pe([(10, "TUNITMAP", 0, form)])
+        with patch.dict(a.PROFILES, {a.sha(data): "synthetic-test"}):
+            report, _ = a.inventory(data)
+        self.assertEqual(report["validation_status"], "failed")
+        self.assertEqual(report["assets"][0]["status"], "invalid")
 
     def test_semantic_order_and_special_cases(self):
         self.assertEqual([a.semantic("TUnitMap", "TerrainList", i)["river_shape"] for i in range(6, 12)],
@@ -279,6 +304,15 @@ class ResourceTests(unittest.TestCase):
         self.assertEqual(a.semantic("TUnitMap", "Cities4List", 5)["owner_name"], "Numidia")
         self.assertEqual(a.semantic("TBattleMap", "BatMapList", 14)["candidate_key"], "battle.unit.heavy_cavalry.large")
         self.assertEqual(a.semantic("TBattleMap", "BatMapList", 16)["raster_operation"], "SRCERASE")
+
+    def test_command_mapping_is_scoped_and_complete_for_existing_keys(self):
+        commands = [(form, name) for form, table in [("TPremierForm", a.MAIN_COMMANDS),
+            ("TAreaMap", a.AREA_COMMANDS), ("TUnitMap", a.UNIT_COMMANDS)] for name in table]
+        keys = {a.glyph_semantic(form, name)["candidate_key"] for form, name in commands}
+        self.assertEqual(len(keys), 36)
+        self.assertIsNone(a.glyph_semantic("TAreaMap", "sb_areatog")["candidate_key"])
+        self.assertIsNone(a.glyph_semantic("TCellAuto", "sb_Save")["candidate_key"])
+        self.assertEqual(a.glyph_semantic("TBattleMap", "sb_cancel")["candidate_key"], "battle.toolbar.cancel_selection")
 
 
 class AudioAndPublicationTests(unittest.TestCase):
@@ -362,6 +396,26 @@ class AudioAndPublicationTests(unittest.TestCase):
             first = a.inventory(b"not qualified", temp)[0]["cache_identity"]
             p.write_bytes(wav(samples=b"\x81\x00"))
             self.assertNotEqual(a.inventory(b"not qualified", temp)[0]["cache_identity"], first)
+
+    def test_unknown_exe_never_exports_audio(self):
+        with tempfile.TemporaryDirectory() as temp:
+            (Path(temp) / "SOUND1.WAV").write_bytes(wav())
+            report, media = a.inventory(b"not qualified", temp, export=True)
+            self.assertEqual(report["sounds"][0]["status"], "available")
+            self.assertEqual(media, {})
+
+    def test_explicit_missing_wav_root_diagnostic(self):
+        rows, _ = a.wav_inventory("/nonexistent-ic2-test-root")
+        self.assertIn("explicit-wav-root", rows[0]["reason"])
+
+    def test_full_static_mapping_audio_inventory(self):
+        with tempfile.TemporaryDirectory() as temp:
+            for n in range(1, 11):
+                (Path(temp) / f"SOUND{n}.WAV").write_bytes(wav())
+            rows, _ = a.wav_inventory(temp)
+            self.assertEqual(len({r["candidate_key"] for r in rows}), 10)
+            self.assertEqual(rows[7]["candidate_key"], "sfx.fleet_sunk")
+            self.assertTrue(all(r["decode_validated"] for r in rows))
 
     def test_cli_is_independent_of_repository(self):
         with tempfile.TemporaryDirectory() as temp:

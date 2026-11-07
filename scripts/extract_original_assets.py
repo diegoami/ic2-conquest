@@ -416,11 +416,23 @@ BATTLE_COMMANDS = {"sb_unitmoves": "unit_moves", "sb_friendlyunits": "friendly_u
                    "sb_enemyunits": "enemy_units", "sb_cancel": "cancel_selection",
                    "sb_endturn": "end_turn", "sb_pauses": "change_pauses",
                    "sb_compgen": "computer_general", "sb_surrender": "surrender"}
+AREA_COMMANDS = {"sb_areacits": "show_cities", "sb_areacap": "show_capital",
+                 "sb_areaarms": "show_armies", "sb_areaflts": "show_fleets", "sb_areaalln": "show_all",
+                 "sb_areali": "show_mercs_light_infantry", "sb_areahi": "show_mercs_heavy_infantry",
+                 "sb_areaarch": "show_mercs_archers", "sb_arealc": "show_mercs_light_cavalry",
+                 "sb_areahc": "show_mercs_heavy_cavalry", "sb_areaallm": "show_mercs_all", "sb_findcity": "find_city"}
+UNIT_COMMANDS = {"sb_supplyarmy": "army_supply", "sb_recruitmercs": "army_recruit_mercenaries",
+                 "sb_transferunit": "army_transfer_unit", "sb_splitarmy": "army_split", "sb_joinarmies": "army_join",
+                 "sb_changeunit": "army_change_units", "sb_disbandarmy": "army_disband",
+                 "sb_supplyfleet": "fleet_supply", "sb_repairfleet": "fleet_repair", "sb_transferships": "fleet_transfer_ships",
+                 "sb_splitfleet": "fleet_split", "sb_joinfleets": "fleet_join", "sb_scuttle": "fleet_scuttle",
+                 "sb_fortifycity": "city_fortify", "sb_cancel": "cancel_selection"}
 
 
 def glyph_semantic(form, name):
-    if form == "TPremierForm" and name in MAIN_COMMANDS:
-        return {"candidate_key": "ui.command." + MAIN_COMMANDS[name] + ".icon", "mapping_status": "candidate-component-correspondence"}
+    commands = {"TPremierForm": MAIN_COMMANDS, "TAreaMap": AREA_COMMANDS, "TUnitMap": UNIT_COMMANDS}.get(form, {})
+    if name in commands:
+        return {"candidate_key": "ui.command." + commands[name] + ".icon", "mapping_status": "candidate-component-correspondence"}
     if form == "TBattleMap" and name in BATTLE_COMMANDS:
         return {"candidate_key": "battle.toolbar." + BATTLE_COMMANDS[name], "mapping_status": "mapped"}
     if form == "TPremierForm" and name.removeprefix("sb_") in NATIONS:
@@ -450,6 +462,8 @@ def wav_info(data):
     if b"fmt " not in chunks or b"data" not in chunks:
         raise Invalid("WAV needs fmt and data chunks")
     fmt = chunks[b"fmt "]
+    if len(fmt) not in (16, 18) or (len(fmt) == 18 and unpack("<H", fmt, 16)[0] != 0):
+        raise Unsupported("extended PCM fmt layout is not qualified")
     encoding, channels, rate, byte_rate, align, bits = unpack("<HHIIHH", fmt)
     if encoding != 1 or channels not in (1, 2) or bits not in (8, 16):
         raise Unsupported("only 8/16-bit mono/stereo integer PCM is supported")
@@ -480,6 +494,8 @@ def wav_inventory(root, media=None):
         matches = [p for p in children if p.name.casefold() == name.casefold()]
         row = {"sound": n, "logical_name": name, "candidate_key": "sfx." + key,
                "status": "missing", "format_provenance": "supplied-file-not-assumed-original"}
+        if root is not None and not Path(root).is_dir():
+            row["reason"] = "explicit-wav-root-missing-or-not-directory"
         if len(matches) > 1:
             row.update(status="unsupported", reason="ambiguous-case-duplicate")
         elif matches:
@@ -525,6 +541,14 @@ def native_group(resource, leaves, data):
         if hsize != 40 or width <= 0 or not 0 < doubled_height <= 512 or doubled_height % 2 or width > 256:
             raise Unsupported("unqualified native icon/cursor image")
         height = doubled_height // 2
+        if cursor:
+            group_width, group_height, group_planes, group_bpp = unpack("<HHHH", row)
+            if group_width != width or group_height not in (height, doubled_height) or (group_planes, group_bpp) != (planes, bpp):
+                raise Invalid("cursor group/leaf geometry mismatch")
+        else:
+            group_width, group_height, _, _, group_planes, group_bpp = unpack("<BBBBHH", row)
+            if (group_width or 256, group_height or 256) != (width, height) or (group_planes, group_bpp) != (planes, bpp):
+                raise Invalid("icon group/leaf geometry mismatch")
         if planes != 1 or bpp not in (1, 4, 8) or unpack("<I", dib, 16)[0] != 0:
             raise Unsupported("only uncompressed indexed native icon/cursor images are supported")
         used = unpack("<I", dib, 32)[0] or (1 << bpp)
@@ -657,7 +681,7 @@ def inventory(data, wav_root=None, export=False):
             except (Invalid, Unsupported) as e:
                 report["diagnostics"].append({"resource_index": i, "status": "invalid" if isinstance(e, Invalid) else "unsupported", "reason": str(e)})
 
-    sounds, wav_ids = wav_inventory(wav_root, media if export else None)
+    sounds, wav_ids = wav_inventory(wav_root, media if export and profile else None)
     report["sounds"] = sounds
     counts = {kind: sum(a.get("kind") == kind and a["status"] == "available" for a in report["assets"])
               for kind in ("image-list", "button-glyph", "resource-bitmap")}
@@ -680,6 +704,10 @@ def inventory(data, wav_root=None, export=False):
     report["limits"] = ["no-game-or-native-rendering-acceptance", "no-original-UI-layout-claim",
                         "no-mask-to-alpha-assumption", "no-backend-session-or-remake-adapter",
                         "one-qualified-EXE-profile", "no-original-audio-provenance-assumed"]
+    report["validation_status"] = "failed" if (
+        report["source"]["status"] != "available" or report["diagnostics"]
+        or any(r["status"] in ("invalid", "unsupported") for r in report["assets"] + sounds)
+    ) else "passed-static"
     return report, media
 
 
@@ -729,7 +757,7 @@ def main(argv=None):
             publish_new(args.media_dir / "manifest.json", (json.dumps(private, indent=2) + "\n").encode())
         publish_new(args.metadata, (json.dumps(report, indent=2) + "\n").encode())
         print(json.dumps({"metadata": str(args.metadata), "source_status": report["source"]["status"], **report["summary"]}))
-        return 2 if report["source"]["status"] != "available" or report["diagnostics"] else 0
+        return 2 if report["validation_status"] == "failed" else 0
     except (Invalid, Unsupported, OSError) as e:
         print("extract_original_assets: " + str(e), file=sys.stderr)
         return 2

@@ -323,3 +323,21 @@ as expected for that explicit input directory. Native cursor/icon reconstruction
 is still tagged partial for consumer-compositing acceptance. Next: stricter
 malformed-group tests, supplied WAV/private-export validation and main delivery
 documentation. No original pixels were written by this initial metadata check.
+
+Static implementation/author validation complete: single-file tool at
+`scripts/extract_original_assets.py`, integration guide at
+`docs/original-assets-extractor.md`, 35 synthetic tests at
+`tests/test_original_assets.py`. Portable invocation needs only Python 3.10+
+stdlib; the copied-tool isolated CLI test passes. The main session must
+explicitly arrange a runtime or port/integrate the contract; no game packaging
+is claimed here. Private export and output hash verification passed; external
+ImageMagick decoder accepted all 352 generated image files. Full inventory and
+362 payload counts are recorded in the task data README and immutable v3
+receipt. Earlier v1/v2 outputs remain preserved.
+
+Current extractor file SHA-256:
+`558bdb331e451c47b209c8c85ff77cb5a03d874a3e3b826e846e75f2a42f407c`.
+Final source packet requests research's independent review of the static tool,
+tests/manifest and consumer limits. Original media/payload hashes remain private;
+only approved metadata and scalar output verification is public. No game run,
+retained pixel remeasurement, remake edit, release publication or integration.
