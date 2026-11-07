@@ -289,3 +289,25 @@ Acknowledgment of the canonical contract and published source marking at
 `3f20ccd9` was delivered successfully to the verified research thread; bridge
 returned the intended threadId with `isError:false`. This status-only exchange
 does not advance a scientific findings-delivery baseline or authorize execution.
+
+## Implementation authorized — portable extractor and main-session delivery
+
+Owner: "well can it start ?" followed by the requirement that the extractor ship
+with the game and be retrievable by the main session. Implement here against the
+Research219 contract. Deliver a self-contained standard-library Python tool with
+stable CLI/manifest, synthetic adversarial tests, metadata-only tracked receipts,
+private optional media output and integration instructions. No conquest imports
+or runtime dependency on this checkout. Python runtime/package integration remains
+an explicit main-session boundary; do not claim a shipped game integration here.
+The owner was given a paste-ready prompt telling main not to duplicate extraction
+and to retrieve the eventual reviewed pinned version.
+
+Plan: bounded PE/DFM readers, indexed BMP/list/glyph decoders and semantics;
+general resource inventory and explicit partial/unsupported categories; validated
+WAV discovery/PCM metadata and decode; atomic no-overwrite private output; focused
+synthetic tests and one uniquely named static validation packet against supplied
+inputs, then research review and main retrieval handoff. Never delete/overwrite a
+measured output or save, even to regenerate it; every output uses a unique name.
+Keep new scalar measurements under `runs/experiments/data/run-exp-assets218/`;
+private media outside Git and public releases. No games or prior pixel probes
+are rerun. Preserve unrelated untracked cleanup/readiness notes.
