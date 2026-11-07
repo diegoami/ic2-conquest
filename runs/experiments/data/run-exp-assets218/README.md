@@ -32,6 +32,9 @@ receipt/media-directory names. Older receipt versions remain immutable.
   generated PNG/CUR/ICO files accepted by host ImageMagick `identify`, retained
   list expectations matched, command-key candidate counts checked.
 - `synthetic-tests-v1.txt`: isolated synthetic suite, no original media fixtures.
+- `extractor-isolated-v4.json` and `isolation-and-overwrite-validation-v1.json`:
+  exact copied tool run with Python `-I` outside the repository; existing private
+  export refused without altering any of its 362 payloads. Same tool hash as v3.
 
 The current tool SHA-256 is
 `558bdb331e451c47b209c8c85ff77cb5a03d874a3e3b826e846e75f2a42f407c`.

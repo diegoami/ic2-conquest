@@ -341,3 +341,16 @@ Final source packet requests research's independent review of the static tool,
 tests/manifest and consumer limits. Original media/payload hashes remain private;
 only approved metadata and scalar output verification is public. No game run,
 retained pixel remeasurement, remake edit, release publication or integration.
+
+Review request delivered to the verified research thread at immutable tool/source
+head `28277713`, PR346 retitled/described around the final extractor scope.
+First overlength message was rejected by the bridge's context budget without
+delivery; shortened 870-byte public request succeeded (`isError:false`). Research
+is active reviewing it. This is separate-session review, not claimed complete.
+
+Additional author portability check: copied the exact tool to an isolated path
+and ran with Python `-I`, cwd outside the repository, against supplied original
+inputs. Exit 0 and all ten WAVs validated. A repeat requesting the existing
+private export was refused (exit 2), wrote no receipt and left all 362 payloads
+unchanged. New immutable v4/isolation receipts retain this validation. No tool
+code changed; SHA-256 remains `558bdb33...` as above. No prior export removed.
