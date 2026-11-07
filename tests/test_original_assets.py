@@ -1,5 +1,6 @@
 """Synthetic fixtures only: no original pixels/audio or game process required."""
 import contextlib
+import errno
 import importlib.util
 import io
 import json
@@ -407,6 +408,22 @@ class AudioAndPublicationTests(unittest.TestCase):
     def test_explicit_missing_wav_root_diagnostic(self):
         rows, _ = a.wav_inventory("/nonexistent-ic2-test-root")
         self.assertIn("explicit-wav-root", rows[0]["reason"])
+
+    def test_wav_io_errors_never_publish_private_absolute_paths(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / "SOUND1.WAV"
+            source.write_bytes(wav())
+            for exc in (PermissionError(errno.EACCES, "denied", str(source)),
+                        FileNotFoundError(errno.ENOENT, "raced removal", str(source))):
+                with self.subTest(error=type(exc).__name__), patch.object(a, "read_file", side_effect=exc):
+                    rows, _ = a.wav_inventory(temp)
+                encoded = json.dumps(rows)
+                self.assertNotIn(str(source), encoded)
+                self.assertNotIn(temp, encoded)
+                self.assertNotIn("raced removal", encoded)
+                self.assertEqual(rows[0]["reason"], "wav-file-io-error")
+                self.assertEqual(rows[0]["io_error_class"], type(exc).__name__)
+                self.assertEqual(rows[0]["io_errno"], exc.errno)
 
     def test_full_static_mapping_audio_inventory(self):
         with tempfile.TemporaryDirectory() as temp:

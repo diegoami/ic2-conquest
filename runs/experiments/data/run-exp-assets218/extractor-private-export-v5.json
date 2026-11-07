@@ -1,0 +1,5437 @@
+{
+  "schema": "ic2-original-assets/1",
+  "extractor_version": "1.0.1",
+  "extractor_sha256": "5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5",
+  "source": {
+    "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+    "profile": "ic2-original-1996-pinned",
+    "status": "available"
+  },
+  "resources": [
+    {
+      "type": 1,
+      "name": 1,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 413136,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 1,
+      "name": 2,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 413444,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 1,
+      "name": 3,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 413752,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 1,
+      "name": 4,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 414060,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 1,
+      "name": 5,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 414368,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 1,
+      "name": 6,
+      "language": 0,
+      "type_label": "cursor",
+      "offset": 414676,
+      "bytes": 308,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBABORT",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 414984,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBALL",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 415448,
+      "bytes": 484,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBCANCEL",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 415932,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBCLOSE",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 416396,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBHELP",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 416860,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBIGNORE",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 417324,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBNO",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 417788,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBOK",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 418252,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBRETRY",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 418716,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 2,
+      "name": "BBYES",
+      "language": 0,
+      "type_label": "bitmap",
+      "offset": 419180,
+      "bytes": 464,
+      "codepage": 0
+    },
+    {
+      "type": 3,
+      "name": 1,
+      "language": 2057,
+      "type_label": "icon",
+      "offset": 419644,
+      "bytes": 744,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3841,
+      "language": 0,
+      "type_label": "string",
+      "offset": 420388,
+      "bytes": 936,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3842,
+      "language": 0,
+      "type_label": "string",
+      "offset": 421324,
+      "bytes": 840,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3843,
+      "language": 0,
+      "type_label": "string",
+      "offset": 422164,
+      "bytes": 940,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3844,
+      "language": 0,
+      "type_label": "string",
+      "offset": 423104,
+      "bytes": 994,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3845,
+      "language": 0,
+      "type_label": "string",
+      "offset": 424100,
+      "bytes": 564,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3846,
+      "language": 0,
+      "type_label": "string",
+      "offset": 424664,
+      "bytes": 730,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3847,
+      "language": 0,
+      "type_label": "string",
+      "offset": 425396,
+      "bytes": 762,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3848,
+      "language": 0,
+      "type_label": "string",
+      "offset": 426160,
+      "bytes": 514,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3849,
+      "language": 0,
+      "type_label": "string",
+      "offset": 426676,
+      "bytes": 200,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3850,
+      "language": 0,
+      "type_label": "string",
+      "offset": 426876,
+      "bytes": 492,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3851,
+      "language": 0,
+      "type_label": "string",
+      "offset": 427368,
+      "bytes": 634,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3852,
+      "language": 0,
+      "type_label": "string",
+      "offset": 428004,
+      "bytes": 938,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3853,
+      "language": 0,
+      "type_label": "string",
+      "offset": 428944,
+      "bytes": 126,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 3873,
+      "language": 0,
+      "type_label": "string",
+      "offset": 429072,
+      "bytes": 876,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4089,
+      "language": 0,
+      "type_label": "string",
+      "offset": 429948,
+      "bytes": 754,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4090,
+      "language": 0,
+      "type_label": "string",
+      "offset": 430704,
+      "bytes": 780,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4091,
+      "language": 0,
+      "type_label": "string",
+      "offset": 431484,
+      "bytes": 718,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4093,
+      "language": 0,
+      "type_label": "string",
+      "offset": 432204,
+      "bytes": 104,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4094,
+      "language": 0,
+      "type_label": "string",
+      "offset": 432308,
+      "bytes": 180,
+      "codepage": 0
+    },
+    {
+      "type": 6,
+      "name": 4095,
+      "language": 0,
+      "type_label": "string",
+      "offset": 432488,
+      "bytes": 174,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TABOUTIC",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 432664,
+      "bytes": 1760,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TAFSUPPLY",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 434424,
+      "bytes": 6661,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TAREAMAP",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 441088,
+      "bytes": 413778,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TARMYRECRUITS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 854868,
+      "bytes": 5169,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TARMYTOARMY",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 860040,
+      "bytes": 5484,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBALANCESHEET",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 865524,
+      "bytes": 5631,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBATTLEDELAYS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 871156,
+      "bytes": 2620,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBATTLEMAP",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 873776,
+      "bytes": 28797,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBATTLEOVER",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 902576,
+      "bytes": 8857,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBATTLEPOLS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 911436,
+      "bytes": 2294,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TBUILDFLEET",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 913732,
+      "bytes": 2788,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TCELLAUTO",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 916520,
+      "bytes": 1187,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TCHANGEARMYUNITS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 917708,
+      "bytes": 1326,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TCHANGETAX",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 919036,
+      "bytes": 2770,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TFINDCITY",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 921808,
+      "bytes": 3931,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TFLEETTOFLEET",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 925740,
+      "bytes": 5141,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TFORTIFYCITY",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 930884,
+      "bytes": 3043,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "THUMANFALLS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 933928,
+      "bytes": 3007,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "THVHBATPOLS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 936936,
+      "bytes": 4001,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TINFORMATION",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 940940,
+      "bytes": 706,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TPICKLEADERS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 941648,
+      "bytes": 8965,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TPOLITICS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 950616,
+      "bytes": 12661,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TPREMIERFORM",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 963280,
+      "bytes": 22536,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TRECRUITMERCS",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 985816,
+      "bytes": 1648,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TRENAMEARMYUNIT",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 987464,
+      "bytes": 1435,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TREPAIRFLEET",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 988900,
+      "bytes": 3047,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TSPLITARMYUNIT",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 991948,
+      "bytes": 2321,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TTOENDTURN",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 994272,
+      "bytes": 1275,
+      "codepage": 0
+    },
+    {
+      "type": 10,
+      "name": "TUNITMAP",
+      "language": 0,
+      "type_label": "rcdata",
+      "offset": 995548,
+      "bytes": 170307,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32762,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165856,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32763,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165876,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32764,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165896,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32765,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165916,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32766,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165936,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 12,
+      "name": 32767,
+      "language": 0,
+      "type_label": "group_cursor",
+      "offset": 1165956,
+      "bytes": 20,
+      "codepage": 0
+    },
+    {
+      "type": 14,
+      "name": "MAINICON",
+      "language": 2057,
+      "type_label": "group_icon",
+      "offset": 1165976,
+      "bytes": 20,
+      "codepage": 0
+    }
+  ],
+  "forms": [
+    {
+      "resource_index": 37,
+      "class": "TAboutIC",
+      "name": "AboutIC"
+    },
+    {
+      "resource_index": 38,
+      "class": "TAFSupply",
+      "name": "AFSupply"
+    },
+    {
+      "resource_index": 39,
+      "class": "TAreaMap",
+      "name": "AreaMap"
+    },
+    {
+      "resource_index": 40,
+      "class": "TArmyRecruits",
+      "name": "ArmyRecruits"
+    },
+    {
+      "resource_index": 41,
+      "class": "TArmyToArmy",
+      "name": "ArmyToArmy"
+    },
+    {
+      "resource_index": 42,
+      "class": "TBalanceSheet",
+      "name": "BalanceSheet"
+    },
+    {
+      "resource_index": 43,
+      "class": "TBattleDelays",
+      "name": "BattleDelays"
+    },
+    {
+      "resource_index": 44,
+      "class": "TBattleMap",
+      "name": "BattleMap"
+    },
+    {
+      "resource_index": 45,
+      "class": "TBattleOver",
+      "name": "BattleOver"
+    },
+    {
+      "resource_index": 46,
+      "class": "TBattlePols",
+      "name": "BattlePols"
+    },
+    {
+      "resource_index": 47,
+      "class": "TBuildFleet",
+      "name": "BuildFleet"
+    },
+    {
+      "resource_index": 48,
+      "class": "TCellAuto",
+      "name": "CellAuto"
+    },
+    {
+      "resource_index": 49,
+      "class": "TChangeArmyUnits",
+      "name": "ChangeArmyUnits"
+    },
+    {
+      "resource_index": 50,
+      "class": "TChangeTax",
+      "name": "ChangeTax"
+    },
+    {
+      "resource_index": 51,
+      "class": "TFindCity",
+      "name": "FindCity"
+    },
+    {
+      "resource_index": 52,
+      "class": "TFleetToFleet",
+      "name": "FleetToFleet"
+    },
+    {
+      "resource_index": 53,
+      "class": "TFortifyCity",
+      "name": "FortifyCity"
+    },
+    {
+      "resource_index": 54,
+      "class": "THumanFalls",
+      "name": "HumanFalls"
+    },
+    {
+      "resource_index": 55,
+      "class": "THVHBatPols",
+      "name": "HVHBatPols"
+    },
+    {
+      "resource_index": 56,
+      "class": "TInformation",
+      "name": "Information"
+    },
+    {
+      "resource_index": 57,
+      "class": "TPickLeaders",
+      "name": "PickLeaders"
+    },
+    {
+      "resource_index": 58,
+      "class": "TPolitics",
+      "name": "Politics"
+    },
+    {
+      "resource_index": 59,
+      "class": "TPremierForm",
+      "name": "PremierForm"
+    },
+    {
+      "resource_index": 60,
+      "class": "TRecruitMercs",
+      "name": "RecruitMercs"
+    },
+    {
+      "resource_index": 61,
+      "class": "TRenameArmyUnit",
+      "name": "RenameArmyUnit"
+    },
+    {
+      "resource_index": 62,
+      "class": "TRepairFleet",
+      "name": "RepairFleet"
+    },
+    {
+      "resource_index": 63,
+      "class": "TSplitArmyUnit",
+      "name": "SplitArmyUnit"
+    },
+    {
+      "resource_index": 64,
+      "class": "TToEndTurn",
+      "name": "ToEndTurn"
+    },
+    {
+      "resource_index": 65,
+      "class": "TUnitMap",
+      "name": "UnitMap"
+    }
+  ],
+  "assets": [
+    {
+      "resource_index": 6,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-006.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 7,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 19,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-007.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 8,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-008.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 9,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-009.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 10,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-010.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 11,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-011.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 12,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-012.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 13,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-013.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 14,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-014.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 15,
+      "kind": "resource-bitmap",
+      "status": "available",
+      "color": {
+        "width": 36,
+        "height": 18,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "file": "resource-015.png",
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areatog",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0010-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        0,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": null,
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areacits",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0011-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_cities.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areacap",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0012-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_capital.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areaarms",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0013-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_armies.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areaflts",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0014-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_fleets.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areaalln",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0015-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_all.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areali",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0016-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_light_infantry.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areahi",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0017-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_heavy_infantry.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areaarch",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0018-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_archers.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_arealc",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0019-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_light_cavalry.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areahc",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0020-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_heavy_cavalry.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_areaallm",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0021-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.show_mercs_all.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/Panel1/sb_findcity",
+      "form": "TAreaMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0022-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.find_city.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/MapsList",
+      "form": "TAreaMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 404348,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 320,
+          "height": 140,
+          "file": "asset-0023-000.png",
+          "mask_file": "asset-0023-000-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 1,
+          "width": 320,
+          "height": 140,
+          "file": "asset-0023-001.png",
+          "mask_file": "asset-0023-001-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 1280,
+        "height": 280,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 1280,
+        "height": 280,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 39,
+      "component": "AreaMap/PointsList",
+      "form": "TAreaMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 2300,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-000.png",
+          "mask_file": "asset-0024-000-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 1,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-001.png",
+          "mask_file": "asset-0024-001-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 2,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-002.png",
+          "mask_file": "asset-0024-002-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 3,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-003.png",
+          "mask_file": "asset-0024-003-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 4,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-004.png",
+          "mask_file": "asset-0024-004-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 5,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-005.png",
+          "mask_file": "asset-0024-005-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 6,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-006.png",
+          "mask_file": "asset-0024-006-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 7,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-007.png",
+          "mask_file": "asset-0024-007-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 8,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-008.png",
+          "mask_file": "asset-0024-008-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        },
+        {
+          "index": 9,
+          "width": 8,
+          "height": 8,
+          "file": "asset-0024-009.png",
+          "mask_file": "asset-0024-009-mask.png",
+          "semantic_id": null,
+          "candidate_key": null,
+          "mapping_status": "unresolved"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 32,
+        "height": 32,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 32,
+        "height": 32,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 10,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_enemyunits",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0025-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.enemy_units",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_cancel",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0026-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.cancel_selection",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_pauses",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0027-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.change_pauses",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_surrender",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0028-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.surrender",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_endturn",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0029-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.end_turn",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_compgen",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0030-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.computer_general",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_unitmoves",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0031-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.unit_moves",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/Panel1/sb_friendlyunits",
+      "form": "TBattleMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0032-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "battle.toolbar.friendly_units",
+      "mapping_status": "mapped"
+    },
+    {
+      "resource_index": 44,
+      "component": "BattleMap/BatMapList",
+      "form": "TBattleMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-000.png",
+          "mask_file": "asset-0033-000-mask.png",
+          "semantic_id": "light_infantry.small",
+          "candidate_key": "battle.unit.light_infantry.small",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-001.png",
+          "mask_file": "asset-0033-001-mask.png",
+          "semantic_id": "light_infantry.medium",
+          "candidate_key": "battle.unit.light_infantry.medium",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-002.png",
+          "mask_file": "asset-0033-002-mask.png",
+          "semantic_id": "light_infantry.large",
+          "candidate_key": "battle.unit.light_infantry.large",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-003.png",
+          "mask_file": "asset-0033-003-mask.png",
+          "semantic_id": "heavy_infantry.small",
+          "candidate_key": "battle.unit.heavy_infantry.small",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-004.png",
+          "mask_file": "asset-0033-004-mask.png",
+          "semantic_id": "heavy_infantry.medium",
+          "candidate_key": "battle.unit.heavy_infantry.medium",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-005.png",
+          "mask_file": "asset-0033-005-mask.png",
+          "semantic_id": "heavy_infantry.large",
+          "candidate_key": "battle.unit.heavy_infantry.large",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-006.png",
+          "mask_file": "asset-0033-006-mask.png",
+          "semantic_id": "archers.small",
+          "candidate_key": "battle.unit.archers.small",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-007.png",
+          "mask_file": "asset-0033-007-mask.png",
+          "semantic_id": "archers.medium",
+          "candidate_key": "battle.unit.archers.medium",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-008.png",
+          "mask_file": "asset-0033-008-mask.png",
+          "semantic_id": "archers.large",
+          "candidate_key": "battle.unit.archers.large",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-009.png",
+          "mask_file": "asset-0033-009-mask.png",
+          "semantic_id": "light_cavalry.small",
+          "candidate_key": "battle.unit.light_cavalry.small",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-010.png",
+          "mask_file": "asset-0033-010-mask.png",
+          "semantic_id": "light_cavalry.medium",
+          "candidate_key": "battle.unit.light_cavalry.medium",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-011.png",
+          "mask_file": "asset-0033-011-mask.png",
+          "semantic_id": "light_cavalry.large",
+          "candidate_key": "battle.unit.light_cavalry.large",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-012.png",
+          "mask_file": "asset-0033-012-mask.png",
+          "semantic_id": "heavy_cavalry.small",
+          "candidate_key": "battle.unit.heavy_cavalry.small",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-013.png",
+          "mask_file": "asset-0033-013-mask.png",
+          "semantic_id": "heavy_cavalry.medium",
+          "candidate_key": "battle.unit.heavy_cavalry.medium",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-014.png",
+          "mask_file": "asset-0033-014-mask.png",
+          "semantic_id": "heavy_cavalry.large",
+          "candidate_key": "battle.unit.heavy_cavalry.large",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-015.png",
+          "mask_file": "asset-0033-015-mask.png",
+          "semantic_id": "ground",
+          "candidate_key": "battle.ground",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 16,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0033-016.png",
+          "mask_file": "asset-0033-016-mask.png",
+          "semantic_id": "battle_selection",
+          "candidate_key": "battle.cursor",
+          "mapping_status": "runtime-composition",
+          "raster_operation": "SRCERASE"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 17,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 48,
+      "component": "CellAuto/Panel1/sb_Save",
+      "form": "TCellAuto",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0034-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": null,
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Open",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0035-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.open.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Save",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0036-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.save.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Endturn",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0037-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.end_turn.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_News",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0038-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.news.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Pols",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0039-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.relations.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Tax",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0040-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.taxation.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Balance",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0041-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.balance_sheet.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Newunit",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0042-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.recruit_unit.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Newfleet",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0043-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.build_fleet.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Rome",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0044-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0044-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 0,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Carthage",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0045-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0045-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 1,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Seleucid",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0046-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0046-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 2,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Ptolemaic",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0047-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0047-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 3,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Macedonia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0048-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0048-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 4,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Numidia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0049-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0049-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 5,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Gaul",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0050-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0050-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 6,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Greece",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0051-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0051-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 7,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Celtiberia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0052-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0052-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 8,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Illyria",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0053-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0053-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 9,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Dacia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0054-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0054-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 10,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Bithynia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0055-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0055-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 11,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Galatia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0056-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0056-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 12,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Armenia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0057-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0057-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 13,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Media",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0058-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0058-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        255
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 14,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Thracia",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 522,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0059-000.png"
+        },
+        {
+          "index": 1,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0059-001.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 40,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 2,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "owner": 15,
+      "candidate_key": null,
+      "mapping_status": "consumer-needs-nation-button",
+      "recolour": "none-stored-owner-art"
+    },
+    {
+      "resource_index": 59,
+      "component": "PremierForm/Panel1/sb_Allnations",
+      "form": "TPremierForm",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0060-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": null,
+      "mapping_status": "unresolved"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_supplyarmy",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0061-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_supply.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_recruitmercs",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0062-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_recruit_mercenaries.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_transferunit",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0063-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_transfer_unit.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_splitarmy",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0064-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_split.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_joinarmies",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0065-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_join.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_changeunit",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0066-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_change_units.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_disbandarmy",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0067-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.army_disband.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_supplyfleet",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0068-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_supply.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_repairfleet",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0069-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_repair.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_transferships",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0070-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_transfer_ships.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_splitfleet",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0071-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_split.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_joinfleets",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0072-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_join.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_scuttle",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0073-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.fleet_scuttle.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_fortifycity",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0074-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.city_fortify.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Panel1/sb_cancel",
+      "form": "TUnitMap",
+      "class": "TSpeedButton",
+      "property": "Glyph.Data",
+      "bytes": 362,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 20,
+          "height": 20,
+          "file": "asset-0075-000.png"
+        }
+      ],
+      "kind": "button-glyph",
+      "color": {
+        "width": 20,
+        "height": 20,
+        "bpp": 4,
+        "palette_entries": 16,
+        "orientation": "bottom-up"
+      },
+      "count": 1,
+      "transparent_rgb": [
+        255,
+        255,
+        0
+      ],
+      "compositing": "TSpeedButton-bottom-left-key; stored-frames-only",
+      "candidate_key": "ui.command.cancel_selection.icon",
+      "mapping_status": "candidate-component-correspondence"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/TerrainList",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 19580,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-000.png",
+          "mask_file": "asset-0076-000-mask.png",
+          "semantic_id": "sea_calm",
+          "candidate_key": "terrain.sea_calm.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-001.png",
+          "mask_file": "asset-0076-001-mask.png",
+          "semantic_id": "sea_rough",
+          "candidate_key": "terrain.sea_rough.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-002.png",
+          "mask_file": "asset-0076-002-mask.png",
+          "semantic_id": "plain",
+          "candidate_key": "terrain.plain.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-003.png",
+          "mask_file": "asset-0076-003-mask.png",
+          "semantic_id": "desert",
+          "candidate_key": "terrain.desert.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-004.png",
+          "mask_file": "asset-0076-004-mask.png",
+          "semantic_id": "forest",
+          "candidate_key": "terrain.forest.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-005.png",
+          "mask_file": "asset-0076-005-mask.png",
+          "semantic_id": "mountain",
+          "candidate_key": "terrain.mountain.tile",
+          "mapping_status": "mapped"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-006.png",
+          "mask_file": "asset-0076-006-mask.png",
+          "semantic_id": "river_EW",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "EW"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-007.png",
+          "mask_file": "asset-0076-007-mask.png",
+          "semantic_id": "river_NS",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "NS"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-008.png",
+          "mask_file": "asset-0076-008-mask.png",
+          "semantic_id": "river_NE",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "NE"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-009.png",
+          "mask_file": "asset-0076-009-mask.png",
+          "semantic_id": "river_ES",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "ES"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-010.png",
+          "mask_file": "asset-0076-010-mask.png",
+          "semantic_id": "river_SW",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "SW"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-011.png",
+          "mask_file": "asset-0076-011-mask.png",
+          "semantic_id": "river_NW",
+          "candidate_key": "terrain.river.tile",
+          "mapping_status": "consumer-needs-shape",
+          "river_shape": "NW"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0076-012.png",
+          "mask_file": "asset-0076-012-mask.png",
+          "semantic_id": "strategic_selection",
+          "candidate_key": null,
+          "mapping_status": "runtime-composition",
+          "raster_operation": "SRCERASE"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 128,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 128,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 13,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/ArmiesList",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 10364,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0077-000.png",
+          "mask_file": "asset-0077-000-mask.png",
+          "semantic_id": "army_tier1",
+          "candidate_key": "army.tier1.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0077-001.png",
+          "mask_file": "asset-0077-001-mask.png",
+          "semantic_id": "army_tier2",
+          "candidate_key": "army.tier2.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0077-002.png",
+          "mask_file": "asset-0077-002-mask.png",
+          "semantic_id": "army_tier3",
+          "candidate_key": "army.tier3.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 64,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 64,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 3,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/FleetsList",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 10364,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0078-000.png",
+          "mask_file": "asset-0078-000-mask.png",
+          "semantic_id": "fleet_tier1",
+          "candidate_key": "fleet.tier1.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0078-001.png",
+          "mask_file": "asset-0078-001-mask.png",
+          "semantic_id": "fleet_tier2",
+          "candidate_key": "fleet.tier2.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0078-002.png",
+          "mask_file": "asset-0078-002-mask.png",
+          "semantic_id": "fleet_tier3",
+          "candidate_key": "fleet.tier3.icon",
+          "mapping_status": "mapped",
+          "recolour": "nation-record-0x424-0x428-0x42c"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 64,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 64,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 3,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Cities1List",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-000.png",
+          "mask_file": "asset-0079-000-mask.png",
+          "semantic_id": "Cities1List.Rome",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 0,
+          "owner_name": "Rome",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-001.png",
+          "mask_file": "asset-0079-001-mask.png",
+          "semantic_id": "Cities1List.Carthage",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 1,
+          "owner_name": "Carthage",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-002.png",
+          "mask_file": "asset-0079-002-mask.png",
+          "semantic_id": "Cities1List.Seleucid",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 2,
+          "owner_name": "Seleucid",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-003.png",
+          "mask_file": "asset-0079-003-mask.png",
+          "semantic_id": "Cities1List.Ptolemaic",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 3,
+          "owner_name": "Ptolemaic",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-004.png",
+          "mask_file": "asset-0079-004-mask.png",
+          "semantic_id": "Cities1List.Macedonia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 4,
+          "owner_name": "Macedonia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-005.png",
+          "mask_file": "asset-0079-005-mask.png",
+          "semantic_id": "Cities1List.Numidia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 5,
+          "owner_name": "Numidia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-006.png",
+          "mask_file": "asset-0079-006-mask.png",
+          "semantic_id": "Cities1List.Gaul",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 6,
+          "owner_name": "Gaul",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-007.png",
+          "mask_file": "asset-0079-007-mask.png",
+          "semantic_id": "Cities1List.Greece",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 7,
+          "owner_name": "Greece",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-008.png",
+          "mask_file": "asset-0079-008-mask.png",
+          "semantic_id": "Cities1List.Celtiberia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 8,
+          "owner_name": "Celtiberia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-009.png",
+          "mask_file": "asset-0079-009-mask.png",
+          "semantic_id": "Cities1List.Illyria",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 9,
+          "owner_name": "Illyria",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-010.png",
+          "mask_file": "asset-0079-010-mask.png",
+          "semantic_id": "Cities1List.Dacia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 10,
+          "owner_name": "Dacia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-011.png",
+          "mask_file": "asset-0079-011-mask.png",
+          "semantic_id": "Cities1List.Bithynia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 11,
+          "owner_name": "Bithynia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-012.png",
+          "mask_file": "asset-0079-012-mask.png",
+          "semantic_id": "Cities1List.Galatia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 12,
+          "owner_name": "Galatia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-013.png",
+          "mask_file": "asset-0079-013-mask.png",
+          "semantic_id": "Cities1List.Armenia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 13,
+          "owner_name": "Armenia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-014.png",
+          "mask_file": "asset-0079-014-mask.png",
+          "semantic_id": "Cities1List.Media",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 14,
+          "owner_name": "Media",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0079-015.png",
+          "mask_file": "asset-0079-015-mask.png",
+          "semantic_id": "Cities1List.Thracia",
+          "candidate_key": "city.tier1.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 15,
+          "owner_name": "Thracia",
+          "recolour": "none-stored-owner-art"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 16,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Cities2List",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-000.png",
+          "mask_file": "asset-0080-000-mask.png",
+          "semantic_id": "Cities2List.Rome",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 0,
+          "owner_name": "Rome",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-001.png",
+          "mask_file": "asset-0080-001-mask.png",
+          "semantic_id": "Cities2List.Carthage",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 1,
+          "owner_name": "Carthage",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-002.png",
+          "mask_file": "asset-0080-002-mask.png",
+          "semantic_id": "Cities2List.Seleucid",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 2,
+          "owner_name": "Seleucid",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-003.png",
+          "mask_file": "asset-0080-003-mask.png",
+          "semantic_id": "Cities2List.Ptolemaic",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 3,
+          "owner_name": "Ptolemaic",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-004.png",
+          "mask_file": "asset-0080-004-mask.png",
+          "semantic_id": "Cities2List.Macedonia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 4,
+          "owner_name": "Macedonia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-005.png",
+          "mask_file": "asset-0080-005-mask.png",
+          "semantic_id": "Cities2List.Numidia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 5,
+          "owner_name": "Numidia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-006.png",
+          "mask_file": "asset-0080-006-mask.png",
+          "semantic_id": "Cities2List.Gaul",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 6,
+          "owner_name": "Gaul",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-007.png",
+          "mask_file": "asset-0080-007-mask.png",
+          "semantic_id": "Cities2List.Greece",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 7,
+          "owner_name": "Greece",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-008.png",
+          "mask_file": "asset-0080-008-mask.png",
+          "semantic_id": "Cities2List.Celtiberia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 8,
+          "owner_name": "Celtiberia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-009.png",
+          "mask_file": "asset-0080-009-mask.png",
+          "semantic_id": "Cities2List.Illyria",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 9,
+          "owner_name": "Illyria",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-010.png",
+          "mask_file": "asset-0080-010-mask.png",
+          "semantic_id": "Cities2List.Dacia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 10,
+          "owner_name": "Dacia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-011.png",
+          "mask_file": "asset-0080-011-mask.png",
+          "semantic_id": "Cities2List.Bithynia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 11,
+          "owner_name": "Bithynia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-012.png",
+          "mask_file": "asset-0080-012-mask.png",
+          "semantic_id": "Cities2List.Galatia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 12,
+          "owner_name": "Galatia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-013.png",
+          "mask_file": "asset-0080-013-mask.png",
+          "semantic_id": "Cities2List.Armenia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 13,
+          "owner_name": "Armenia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-014.png",
+          "mask_file": "asset-0080-014-mask.png",
+          "semantic_id": "Cities2List.Media",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 14,
+          "owner_name": "Media",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0080-015.png",
+          "mask_file": "asset-0080-015-mask.png",
+          "semantic_id": "Cities2List.Thracia",
+          "candidate_key": "city.tier2.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 15,
+          "owner_name": "Thracia",
+          "recolour": "none-stored-owner-art"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 16,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Cities3List",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-000.png",
+          "mask_file": "asset-0081-000-mask.png",
+          "semantic_id": "Cities3List.Rome",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 0,
+          "owner_name": "Rome",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-001.png",
+          "mask_file": "asset-0081-001-mask.png",
+          "semantic_id": "Cities3List.Carthage",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 1,
+          "owner_name": "Carthage",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-002.png",
+          "mask_file": "asset-0081-002-mask.png",
+          "semantic_id": "Cities3List.Seleucid",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 2,
+          "owner_name": "Seleucid",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-003.png",
+          "mask_file": "asset-0081-003-mask.png",
+          "semantic_id": "Cities3List.Ptolemaic",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 3,
+          "owner_name": "Ptolemaic",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-004.png",
+          "mask_file": "asset-0081-004-mask.png",
+          "semantic_id": "Cities3List.Macedonia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 4,
+          "owner_name": "Macedonia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-005.png",
+          "mask_file": "asset-0081-005-mask.png",
+          "semantic_id": "Cities3List.Numidia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 5,
+          "owner_name": "Numidia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-006.png",
+          "mask_file": "asset-0081-006-mask.png",
+          "semantic_id": "Cities3List.Gaul",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 6,
+          "owner_name": "Gaul",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-007.png",
+          "mask_file": "asset-0081-007-mask.png",
+          "semantic_id": "Cities3List.Greece",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 7,
+          "owner_name": "Greece",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-008.png",
+          "mask_file": "asset-0081-008-mask.png",
+          "semantic_id": "Cities3List.Celtiberia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 8,
+          "owner_name": "Celtiberia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-009.png",
+          "mask_file": "asset-0081-009-mask.png",
+          "semantic_id": "Cities3List.Illyria",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 9,
+          "owner_name": "Illyria",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-010.png",
+          "mask_file": "asset-0081-010-mask.png",
+          "semantic_id": "Cities3List.Dacia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 10,
+          "owner_name": "Dacia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-011.png",
+          "mask_file": "asset-0081-011-mask.png",
+          "semantic_id": "Cities3List.Bithynia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 11,
+          "owner_name": "Bithynia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-012.png",
+          "mask_file": "asset-0081-012-mask.png",
+          "semantic_id": "Cities3List.Galatia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 12,
+          "owner_name": "Galatia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-013.png",
+          "mask_file": "asset-0081-013-mask.png",
+          "semantic_id": "Cities3List.Armenia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 13,
+          "owner_name": "Armenia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-014.png",
+          "mask_file": "asset-0081-014-mask.png",
+          "semantic_id": "Cities3List.Media",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 14,
+          "owner_name": "Media",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0081-015.png",
+          "mask_file": "asset-0081-015-mask.png",
+          "semantic_id": "Cities3List.Thracia",
+          "candidate_key": "city.tier3.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 15,
+          "owner_name": "Thracia",
+          "recolour": "none-stored-owner-art"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 16,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/Cities4List",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-000.png",
+          "mask_file": "asset-0082-000-mask.png",
+          "semantic_id": "Cities4List.Rome",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 0,
+          "owner_name": "Rome",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-001.png",
+          "mask_file": "asset-0082-001-mask.png",
+          "semantic_id": "Cities4List.Carthage",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 1,
+          "owner_name": "Carthage",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-002.png",
+          "mask_file": "asset-0082-002-mask.png",
+          "semantic_id": "Cities4List.Seleucid",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 2,
+          "owner_name": "Seleucid",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-003.png",
+          "mask_file": "asset-0082-003-mask.png",
+          "semantic_id": "Cities4List.Ptolemaic",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 3,
+          "owner_name": "Ptolemaic",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-004.png",
+          "mask_file": "asset-0082-004-mask.png",
+          "semantic_id": "Cities4List.Macedonia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 4,
+          "owner_name": "Macedonia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-005.png",
+          "mask_file": "asset-0082-005-mask.png",
+          "semantic_id": "Cities4List.Numidia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 5,
+          "owner_name": "Numidia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-006.png",
+          "mask_file": "asset-0082-006-mask.png",
+          "semantic_id": "Cities4List.Gaul",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 6,
+          "owner_name": "Gaul",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-007.png",
+          "mask_file": "asset-0082-007-mask.png",
+          "semantic_id": "Cities4List.Greece",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 7,
+          "owner_name": "Greece",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-008.png",
+          "mask_file": "asset-0082-008-mask.png",
+          "semantic_id": "Cities4List.Celtiberia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 8,
+          "owner_name": "Celtiberia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-009.png",
+          "mask_file": "asset-0082-009-mask.png",
+          "semantic_id": "Cities4List.Illyria",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 9,
+          "owner_name": "Illyria",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-010.png",
+          "mask_file": "asset-0082-010-mask.png",
+          "semantic_id": "Cities4List.Dacia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 10,
+          "owner_name": "Dacia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-011.png",
+          "mask_file": "asset-0082-011-mask.png",
+          "semantic_id": "Cities4List.Bithynia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 11,
+          "owner_name": "Bithynia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-012.png",
+          "mask_file": "asset-0082-012-mask.png",
+          "semantic_id": "Cities4List.Galatia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 12,
+          "owner_name": "Galatia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-013.png",
+          "mask_file": "asset-0082-013-mask.png",
+          "semantic_id": "Cities4List.Armenia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 13,
+          "owner_name": "Armenia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-014.png",
+          "mask_file": "asset-0082-014-mask.png",
+          "semantic_id": "Cities4List.Media",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 14,
+          "owner_name": "Media",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0082-015.png",
+          "mask_file": "asset-0082-015-mask.png",
+          "semantic_id": "Cities4List.Thracia",
+          "candidate_key": "city.tier4.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 15,
+          "owner_name": "Thracia",
+          "recolour": "none-stored-owner-art"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 16,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 65,
+      "component": "UnitMap/CapitalsList",
+      "form": "TUnitMap",
+      "class": "TImageList",
+      "property": "Bitmap",
+      "bytes": 24188,
+      "status": "available",
+      "images": [
+        {
+          "index": 0,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-000.png",
+          "mask_file": "asset-0083-000-mask.png",
+          "semantic_id": "CapitalsList.Rome",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 0,
+          "owner_name": "Rome",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 1,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-001.png",
+          "mask_file": "asset-0083-001-mask.png",
+          "semantic_id": "CapitalsList.Carthage",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 1,
+          "owner_name": "Carthage",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 2,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-002.png",
+          "mask_file": "asset-0083-002-mask.png",
+          "semantic_id": "CapitalsList.Seleucid",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 2,
+          "owner_name": "Seleucid",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 3,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-003.png",
+          "mask_file": "asset-0083-003-mask.png",
+          "semantic_id": "CapitalsList.Ptolemaic",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 3,
+          "owner_name": "Ptolemaic",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 4,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-004.png",
+          "mask_file": "asset-0083-004-mask.png",
+          "semantic_id": "CapitalsList.Macedonia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 4,
+          "owner_name": "Macedonia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 5,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-005.png",
+          "mask_file": "asset-0083-005-mask.png",
+          "semantic_id": "CapitalsList.Numidia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 5,
+          "owner_name": "Numidia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 6,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-006.png",
+          "mask_file": "asset-0083-006-mask.png",
+          "semantic_id": "CapitalsList.Gaul",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 6,
+          "owner_name": "Gaul",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 7,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-007.png",
+          "mask_file": "asset-0083-007-mask.png",
+          "semantic_id": "CapitalsList.Greece",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 7,
+          "owner_name": "Greece",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 8,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-008.png",
+          "mask_file": "asset-0083-008-mask.png",
+          "semantic_id": "CapitalsList.Celtiberia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 8,
+          "owner_name": "Celtiberia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 9,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-009.png",
+          "mask_file": "asset-0083-009-mask.png",
+          "semantic_id": "CapitalsList.Illyria",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 9,
+          "owner_name": "Illyria",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 10,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-010.png",
+          "mask_file": "asset-0083-010-mask.png",
+          "semantic_id": "CapitalsList.Dacia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 10,
+          "owner_name": "Dacia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 11,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-011.png",
+          "mask_file": "asset-0083-011-mask.png",
+          "semantic_id": "CapitalsList.Bithynia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 11,
+          "owner_name": "Bithynia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 12,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-012.png",
+          "mask_file": "asset-0083-012-mask.png",
+          "semantic_id": "CapitalsList.Galatia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 12,
+          "owner_name": "Galatia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 13,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-013.png",
+          "mask_file": "asset-0083-013-mask.png",
+          "semantic_id": "CapitalsList.Armenia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 13,
+          "owner_name": "Armenia",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 14,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-014.png",
+          "mask_file": "asset-0083-014-mask.png",
+          "semantic_id": "CapitalsList.Media",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 14,
+          "owner_name": "Media",
+          "recolour": "none-stored-owner-art"
+        },
+        {
+          "index": 15,
+          "width": 32,
+          "height": 32,
+          "file": "asset-0083-015.png",
+          "mask_file": "asset-0083-015-mask.png",
+          "semantic_id": "CapitalsList.Thracia",
+          "candidate_key": "city.capital.icon",
+          "mapping_status": "consumer-needs-owner",
+          "owner": 15,
+          "owner_name": "Thracia",
+          "recolour": "none-stored-owner-art"
+        }
+      ],
+      "kind": "image-list",
+      "color": {
+        "width": 128,
+        "height": 160,
+        "bpp": 8,
+        "palette_entries": 256,
+        "orientation": "bottom-up"
+      },
+      "mask": {
+        "width": 128,
+        "height": 160,
+        "bpp": 1,
+        "palette_entries": 2,
+        "orientation": "bottom-up"
+      },
+      "count": 16,
+      "compositing": "mask-and-xor; inspect raster_operation before consumer conversion"
+    },
+    {
+      "resource_index": 66,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-066.cur",
+      "images": [
+        {
+          "image_id": 6,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            0,
+            0
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 67,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-067.cur",
+      "images": [
+        {
+          "image_id": 1,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            0,
+            0
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 68,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-068.cur",
+      "images": [
+        {
+          "image_id": 2,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            14,
+            12
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 69,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-069.cur",
+      "images": [
+        {
+          "image_id": 3,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            16,
+            14
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 70,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-070.cur",
+      "images": [
+        {
+          "image_id": 4,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            0,
+            0
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 71,
+      "kind": "group_cursor",
+      "status": "partial",
+      "file": "resource-071.cur",
+      "images": [
+        {
+          "image_id": 5,
+          "width": 32,
+          "height": 32,
+          "bpp": 1,
+          "hotspot": [
+            2,
+            2
+          ],
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    },
+    {
+      "resource_index": 72,
+      "kind": "group_icon",
+      "status": "partial",
+      "file": "resource-072.ico",
+      "images": [
+        {
+          "image_id": 1,
+          "width": 32,
+          "height": 32,
+          "bpp": 4,
+          "hotspot": null,
+          "compositing": "native-XOR-AND-planes-not-alpha"
+        }
+      ],
+      "reason": "native container recovered; consumer raster composition unverified"
+    }
+  ],
+  "diagnostics": [],
+  "categories": {
+    "embedded_media": "partial",
+    "backgrounds": "no-separate-background-property-observed",
+    "area_map_semantics": "partial",
+    "native_cursor_compositing": "partial",
+    "owner_city_mapping": "consumer-needs-owner",
+    "river_mapping": "consumer-needs-six-shapes",
+    "terrain_surfaces": "no-original-equivalent-established",
+    "new_scenarios": "no-original-art-established",
+    "audio": "available"
+  },
+  "sounds": [
+    {
+      "sound": 1,
+      "logical_name": "SOUND1.WAV",
+      "candidate_key": "sfx.unit_move",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND1.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 868,
+      "duration_seconds": 0.019682539682539683,
+      "source_bytes": 1814,
+      "decode_validated": true,
+      "file": "sound-01.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 2,
+      "logical_name": "SOUND2.WAV",
+      "candidate_key": "sfx.fleet_move",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND2.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 2102,
+      "duration_seconds": 0.04766439909297052,
+      "source_bytes": 4282,
+      "decode_validated": true,
+      "file": "sound-02.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 3,
+      "logical_name": "SOUND3.WAV",
+      "candidate_key": "sfx.battle_arrows",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND3.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 15480,
+      "duration_seconds": 0.3510204081632653,
+      "source_bytes": 31038,
+      "decode_validated": true,
+      "file": "sound-03.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 4,
+      "logical_name": "SOUND4.WAV",
+      "candidate_key": "sfx.battle_javelin",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND4.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 6408,
+      "duration_seconds": 0.14530612244897959,
+      "source_bytes": 12894,
+      "decode_validated": true,
+      "file": "sound-04.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 5,
+      "logical_name": "SOUND5.WAV",
+      "candidate_key": "sfx.battle_melee",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND5.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 16364,
+      "duration_seconds": 0.3710657596371882,
+      "source_bytes": 32806,
+      "decode_validated": true,
+      "file": "sound-05.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 6,
+      "logical_name": "SOUND6.WAV",
+      "candidate_key": "sfx.siege_failed",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND6.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 19836,
+      "duration_seconds": 0.44979591836734695,
+      "source_bytes": 39750,
+      "decode_validated": true,
+      "file": "sound-06.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 7,
+      "logical_name": "SOUND7.WAV",
+      "candidate_key": "sfx.city_captured",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND7.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 36188,
+      "duration_seconds": 0.8205895691609977,
+      "source_bytes": 72454,
+      "decode_validated": true,
+      "file": "sound-07.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 8,
+      "logical_name": "SOUND8.WAV",
+      "candidate_key": "sfx.fleet_sunk",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND8.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 13186,
+      "duration_seconds": 0.29900226757369613,
+      "source_bytes": 26450,
+      "decode_validated": true,
+      "file": "sound-08.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 9,
+      "logical_name": "SOUND9.WAV",
+      "candidate_key": "sfx.battle",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND9.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 18218,
+      "duration_seconds": 0.4131065759637188,
+      "source_bytes": 36514,
+      "decode_validated": true,
+      "file": "sound-09.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    },
+    {
+      "sound": 10,
+      "logical_name": "SOUND10.WAV",
+      "candidate_key": "sfx.nation_conquered",
+      "status": "available",
+      "format_provenance": "supplied-file-not-assumed-original",
+      "basename": "SOUND10.WAV",
+      "encoding": "PCM",
+      "channels": 1,
+      "sample_rate": 44100,
+      "bits_per_sample": 16,
+      "frames": 62224,
+      "duration_seconds": 1.4109750566893424,
+      "source_bytes": 124526,
+      "decode_validated": true,
+      "file": "sound-10.wav",
+      "conversion": "none-supplied-PCM-preserved"
+    }
+  ],
+  "summary": {
+    "resource_leaves": 73,
+    "forms": 29,
+    "image-list": 11,
+    "button-glyph": 63,
+    "resource-bitmap": 10,
+    "list_images": 128,
+    "glyph_frames": 79,
+    "valid_sounds": 10
+  },
+  "cache_identity": "55c3ec377f091c7184a4a5c4f50e1af3ca870ab2b8b94e40f95d27646355e705",
+  "media_exported": true,
+  "limits": [
+    "no-game-or-native-rendering-acceptance",
+    "no-original-UI-layout-claim",
+    "no-mask-to-alpha-assumption",
+    "no-backend-session-or-remake-adapter",
+    "one-qualified-EXE-profile",
+    "no-original-audio-provenance-assumed"
+  ],
+  "validation_status": "passed-static"
+}

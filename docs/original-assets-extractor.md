@@ -13,7 +13,7 @@ Canonical contract: Research PR219 at
 Remake key crosswalk baseline: `55bd7fcef91e41b179a6df9851384bb687932e8e`.
 Only the EXE profile pinned in `setup/pins.txt` is qualified. Unknown hashes
 receive explicit unsupported metadata; they do not get silently decoded as this
-profile. The metadata schema is `ic2-original-assets/1`, tool version `1.0.0`.
+profile. The metadata schema is `ic2-original-assets/1`, tool version `1.0.1`.
 
 ## Main-session retrieval and shipping boundary
 
@@ -85,6 +85,8 @@ The JSON contains:
 - `sounds`: ten logical sound names, discovered basename, availability, PCM
   channels/rate/depth/frames/duration, decode validation and candidate sfx key.
   Supplied audio provenance is not automatically labelled original or converted.
+  Filesystem failures use `wav-file-io-error`, exception class and errno;
+  absolute input paths and raw filesystem exception text are excluded from JSON.
 - `summary`, `diagnostics`, `categories`, `validation_status` and `limits`:
   explicit bounded results and unresolved coverage. `passed-static` does not
   imply rendered, audible, native Windows or remake acceptance.

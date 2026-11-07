@@ -18,7 +18,7 @@ import sys
 import tempfile
 import zlib
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 SCHEMA = "ic2-original-assets/1"
 EXE_PIN = "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
 PROFILES = {EXE_PIN: "ic2-original-1996-pinned"}
@@ -510,7 +510,12 @@ def wav_inventory(root, media=None):
                            conversion="none-supplied-PCM-preserved")
                 if media is not None:
                     media[row["file"]] = data
-            except (Invalid, Unsupported, OSError) as e:
+            except OSError as e:
+                # Filesystem exception text includes private absolute filenames.
+                # Receipts may be public; retain only stable non-path diagnostics.
+                row.update(status="invalid", reason="wav-file-io-error",
+                           io_error_class=type(e).__name__, io_errno=e.errno)
+            except (Invalid, Unsupported) as e:
                 row.update(status="unsupported" if isinstance(e, Unsupported) else "invalid", reason=str(e))
         files.append(row)
     return files, identities

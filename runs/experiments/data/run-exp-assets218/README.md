@@ -27,11 +27,16 @@ receipt/media-directory names. Older receipt versions remain immutable.
   omitted. It predates later hardening; its code identity is historical.
 - `extractor-private-export-v2.json`: first private-media export, before final
   command-mapping/source-identity changes. Preserved as measured.
-- `extractor-private-export-v3.json`: current candidate's complete scalar receipt.
+- `extractor-private-export-v3.json`: complete scalar receipt for the 1.0.0
+  candidate, before the research-requested filesystem-error redaction fix.
 - `private-export-validation-v1.json`: every private output hash verified, all
   generated PNG/CUR/ICO files accepted by host ImageMagick `identify`, retained
   list expectations matched, command-key candidate counts checked.
 - `synthetic-tests-v1.txt`: isolated synthetic suite, no original media fixtures.
+- `extractor-private-export-v5.json`, `private-export-validation-v2.json` and
+  `synthetic-tests-v2.txt`: current 1.0.1 candidate after research's metadata
+  privacy correction; 36 tests pass. All 362 media payloads match the previously
+  externally decoded files byte-for-byte, and all new output hashes verify.
 - `extractor-isolated-v4.json` and `isolation-and-overwrite-validation-v1.json`:
   exact copied tool run with Python `-I` outside the repository; existing private
   export refused without altering any of its 362 payloads. Same tool hash as v3.
@@ -40,8 +45,9 @@ receipt/media-directory names. Older receipt versions remain immutable.
   no proposed mapping; owner/river suitability is not implied by key existence.
 
 The current tool SHA-256 is
-`558bdb331e451c47b209c8c85ff77cb5a03d874a3e3b826e846e75f2a42f407c`.
+`5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`.
 It is recorded independently in the receipt and the private export validation.
+The earlier 1.0.0 SHA-256 was `558bdb33...`, retained in its immutable receipts.
 Any later code change needs a new receipt identity/version, not edits to these.
 
 ## Result and limits

@@ -354,3 +354,24 @@ inputs. Exit 0 and all ten WAVs validated. A repeat requesting the existing
 private export was refused (exit 2), wrote no receipt and left all 362 payloads
 unchanged. New immutable v4/isolation receipts retain this validation. No tool
 code changed; SHA-256 remains `558bdb33...` as above. No prior export removed.
+
+### Research review correction — metadata filesystem-path disclosure
+
+Research's review of `28277713` reproduced the original metadata and all ten
+supplied WAVs exactly, reran 35 synthetic tests in isolation, and independently
+checked PNG CRC/row geometry for 345 PNGs (362 total payloads). It found one
+specific issue: wav_inventory serialized raw OSError text, which can include
+an absolute private WAV path, contrary to the public metadata contract.
+
+Fixed within conquest source ownership: tool 1.0.1 records a stable
+`wav-file-io-error` reason, exception class and errno only. Added regressions for
+PermissionError and FileNotFoundError, including their private filename and
+free-text messages; those strings must not appear in JSON. All 36 tests pass.
+New immutable v5 metadata/private export and validation-v2 receipts passed.
+The successful scan differs from v3 only in version/source-hash/cache identity;
+all 362 media payloads are byte-identical to the already externally validated
+ones and their newly written hashes verify. All older receipts/media retained.
+
+New portable source SHA-256:
+`5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`.
+Research recheck requested before calling this corrected packet reviewed.
