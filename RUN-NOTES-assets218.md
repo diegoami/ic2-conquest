@@ -1,0 +1,200 @@
+# Research #218: existing original-asset coverage and proposed split
+
+## Scope and source pins — 2026-11-07
+
+Requested by the verified `ic2-research` session for
+[Research #218](https://github.com/diegoami/imperial-conquest-2-research/issues/218),
+the resource-research portion of
+[remake #1740](https://github.com/diegoami/imperial_conquest_2/issues/1740).
+This hand-back inventories existing work and proposes bounded follow-ups.
+No new extraction, measurement batch, game run, remake edit or policy change.
+Original/extracted media remains private. Public outputs are code and non-media
+metadata only. Do not repeat retained measurements or publish their media.
+
+- Conquest source baseline: `f71c70ffa9ccf8f7cfbb5335fb28c4c44d341ed6`.
+- Research reports read at `18da3a324cae3e5356bc72109f90c3495b0bc675`.
+- Remake source fetched read-only at
+  `55bd7fcef91e41b179a6df9851384bb687932e8e`.
+- Original EXE: existing `setup/pins.txt` SHA-256
+  `9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31`.
+- Old work roots are gone. Source
+  `/tmp/ic2-research-ready-20261107/environment.sh` for retained private inputs,
+  decompilation and Ghidra paths. All three decompilation pins passed here.
+  This does not restore a Wine prefix or authorize a game run.
+
+## Existing tools and their limits
+
+All paths below are in conquest at the source baseline:
+
+- `runs/experiments/feature_inventory/extract_forms.py`: TPF0 object parser;
+  metadata-only binary-property placeholders by default. The corresponding
+  research copy is `scripts/winhelp_tpf0/extract_forms.py`.
+- `runs/experiments/data/run-exp-unit-icon-resources/extract_imagelists.py`:
+  reuses that parser with binary properties retained and scans all forms for
+  TImageList.Bitmap. Despite its unit-map-oriented docstring, its retained
+  inventory includes AreaMap and BattleMap as well.
+- `decode_imagelists.py` in the same directory: parses image-list size/count,
+  colour BMP and mask BMP; slices by cell dimensions and sheet width; writes
+  BMP/PNG and metadata. The pixel accessor assumes 8 bpp. Its conversion step
+  needs ImageMagick. It does not establish arbitrary-version compatibility.
+- `extract_glyphs.py` there: extracts only the sixteen nation TSpeedButton
+  Glyph.Data properties, handles 4/8-bpp palette indices, records NumGlyphs
+  and the bottom-left transparency key. It is not a general toolbar extractor.
+- `compare_city_store.py`, `check_recolour.py`, `compare_roles.py` and
+  `match_toolbar.py`: existing retained comparison logic and results.
+- `runs/experiments/selection1010/{capture.py,recheck.py}`: retained selection
+  evidence and analysis. Do not run the capture script for this intake.
+- `runs/experiments/cosmetic_gaps/reharvest_wavs.py`: reattributes already
+  recorded file opens; it does not discover new sound mappings or prove audio.
+
+These are experimental scripts, not a production installation adapter. Current
+extractors scan for TPF0 signatures and skip parse failures; they do not inventory
+PE resource-directory IDs/languages or robustly report unsupported versions.
+Several media writers overwrite fixed filenames. Any future run needs a fresh
+private output directory and immutable/versioned tracked text receipts.
+
+## Retained category inventory
+
+Counts below come from existing imagelists.json/imagelists_decoded.json and the
+canonical reports, not a new extraction. Stored-image availability does not prove
+native Windows rendering or a complete original UI.
+
+| Category | Existing coverage | Remaining work |
+|---|---|---|
+| Strategic terrain and rivers | TUnitMap.TerrainList: 13 images, 32x32, 8 bpp, mask present; 12 terrain/connectivity cells plus selection image 12 | Complete index-to-terrain/river crosswalk and mask semantics; preserve six river shapes separately |
+| Cities/capitals | Cities1List..Cities4List and CapitalsList: 16 images each, 32x32, 8 bpp; owner-indexed artwork, not recoloured | Adapter must retain owner-specific pictures and four tiers plus capital |
+| Strategic armies/fleets | ArmiesList and FleetsList: 3 templates each, 32x32, 8 bpp | Preserve band order and recolour through nation fields, not a generic tint |
+| Tactical board | TBattleMap.BatMapList: 17 images, 32x32, 8 bpp; 15 templates, ground, cursor | General decoder/mask validation; complete battle toolbar extraction |
+| Area map | TAreaMap.MapsList: 2 images, 320x140; PointsList: 10 images, 8x8, both 8 bpp with masks | Identify every point index, palette/compositing and current consumer mapping |
+| Nation buttons | 16 TPremierForm sb_<Nation> glyphs; 40x20, 4 bpp, two 20x20 frames | General command glyph coverage and state/frame semantics remain separate |
+| Selection overlays | Strategic TerrainList[12] and battle BatMapList[16], SRCERASE raster operation | A static alpha cursor is insufficient to encode destination inversion; retain current reconstructed selection behavior |
+| OS cursors/backgrounds/chrome | No complete inventory in the examined extractors | Enumerate PE bitmap/icon/cursor/group resources, remaining DFM images/glyphs; distinguish stored media from VCL/runtime drawing |
+| Audio | SOUND1.WAV..SOUND10.WAV mapped by code; formats/durations documented | Installation presence/case checks, supplied-format detection and conversion requirements; native/audio-output verification remains separate |
+
+The eleven image lists and sixteen nation glyphs are already known; do not
+rediscover them by screenshot extraction. The restored input directory currently
+contains no WAV files. All ten sound basenames were preserved in the verified
+private old-workarea backup; source recovery can reuse that backup rather than
+assuming an installed WAVS folder or arranging downloads of original media.
+No sound samples, pixel dumps or private archive hashes belong in this report.
+
+## Palette, recolour and sprite order
+
+Canonical sources: Research reports `2026-10-09-unit-icon-recolour-and-nation-glyphs.md`,
+`2026-10-09-city-marker-colours.md`, `2026-10-04-decompiled-tactical-battle-rules.md`
+(image section), `2026-10-09-battle-map-units-use-the-nation-recolour.md`,
+`2026-10-09-numidian-battle-drawn-in-wine.md` and
+`2026-10-30-unit-map-selection-drawing1010.md`.
+
+- Image-list storage contains two leading dwords (colour-BMP byte length and
+  count), then the colour BMP and a subsequent mask BMP. Sheet capacity includes
+  unused cells; use the stored image count, not dimensions alone.
+- Handle BMP BGR palette entries, padded rows, orientation and 1-bit mask
+  interpretation explicitly. Mask presence is inventoried; full mask/alpha
+  semantics across all resources are not certified by the current decoder.
+- Army/fleet and tactical templates replace purple, white and blue with nation
+  record dwords +0x424/+0x428/+0x42C. Account for Delphi TColor channel order.
+  City/capital artwork already contains owner colours. Numidia has grey unit
+  fill but teal city/glyph fill; do not collapse those distinct sources.
+- Battle indices 0..14 are five types in order LI, HI, archers, LC, HC, each
+  small/medium/large; 15 is ground, 16 cursor. Runtime UnitsList builds attacker
+  copies 0..14 and defender copies 15..29. Reuse the original three-region
+  substitution and preserve other pixels.
+- TSpeedButton nation sheets use two frames and their own palette; the
+  bottom-left key is yellow for owners 0..4 and 15, white for owners 5..14.
+- Selection uses SRCERASE, including destination inversion; it is not a yellow
+  transparent picture, and retained strategic evidence finds no game blink timer.
+
+## Sound mapping to current remake keys
+
+All ten mappings are derived from original code. The later canonical
+`2026-10-06-cosmetic-gaps.md` adds Wine file-open evidence for strategic 1/2,
+scuttle 8 and computer battle 9. Those four are neither listening tests nor
+native Windows verification. Other paths remain code-derived in this intake.
+
+| SOUND<n>.WAV | Event | Remake asset key |
+|---:|---|---|
+| 1 | Human strategic army step; tactical placement/move | sfx.unit_move |
+| 2 | Human strategic fleet step | sfx.fleet_move |
+| 3 | Archer shot | sfx.battle_arrows |
+| 4 | Other ranged shot, light infantry/cavalry | sfx.battle_javelin |
+| 5 | Melee target/exchange | sfx.battle_melee |
+| 6 | Failed siege | sfx.siege_failed |
+| 7 | City captured | sfx.city_captured |
+| 8 | Fleet lost: scuttle, battle or storm | sfx.fleet_sunk |
+| 9 | Field battle with neither owner local/human | sfx.battle |
+| 10 | Nation conquered | sfx.nation_conquered |
+
+The original calls PlaySoundA with flags zero; missing files can produce a
+default system sound. Original WAVs include 8/16-bit mono PCM with differing
+sample rates; do not assume the converted working copies in older research are
+the shipped files. No sound-policy or playback-timing change is proposed here.
+
+## Current remake mapping boundaries
+
+Read `src/IC2.Engine/Assets/AssetKeys.cs`,
+`godot/Assets/{BattleAssetKeys,BattleIconTint,AssetPackManifestLoader,AssetPackTextureLoader}.cs`
+and `docs/asset-specification.md` at the pinned remake revision.
+
+- Core AssetKeys declares/yields 75 keys. BattleAssetKeys adds 25: fifteen
+  `battle.unit.<type>.<size>`, `battle.ground`, `battle.cursor` and eight
+  `battle.toolbar.<button>`. Use the union of 100, not the core count alone.
+- Direct category correspondences exist for three army tiers, three fleet tiers,
+  five city variants, six non-river terrain tiles, ten sfx keys and seventeen
+  tactical board keys. Owner-specific city art needs an adapter strategy beyond
+  simply assigning one file to each current generic city key.
+- One `terrain.river.tile` key cannot describe all six original river
+  connectivity images. The six seamless surface keys are authored renderer
+  requirements, not directly extractable original surface textures.
+- Current battle tint explicitly understands the original three marker colours;
+  do not tint stored city/glyph pictures with that unit-template rule.
+- The remaining eight battle-toolbar keys, thirty-six ui.command keys and five
+  unit.* icons need component/index mappings and suitability checks. Existing
+  nation buttons are not a blanket mapping for every command icon.
+- Manifest/texture loaders consume resolved asset files and fallback packs;
+  this does not establish support for embedded EXE resources or DFM decoding.
+  The current asset specification describes authored assets and contains
+  historical comments; code consumers and pinned evidence take precedence.
+- Later scenarios/custom nations have no demonstrated original pictures. Flag
+  unavailable mappings and retain existing fallback behavior; do not invent
+  historical artwork or change presentation/gameplay policy in this intake.
+
+## Bounded proposed division of work
+
+1. **Conquest, proposed follow-up only:** supply a static, metadata-first PE/DFM
+   inventory/extractor from the existing parser. Enumerate resource type/name/ID/
+   language and component path; decode supported BMP/mask formats; enumerate all
+   glyph frames/cursors/backgrounds. Validate counts, cell order, bounds and masks
+   with synthetic parser tests and private original inputs. Outputs: reusable
+   tools, non-media matrix and private extraction/validation receipt. Do not run
+   a game or revisit retained measurements. Unsupported inputs fail explicitly.
+2. **Research:** consolidate canonical report/evidence strengths, terrain/river
+   and sound crosswalks, version/partial-installation matrix and extraction spec;
+   review the metadata/tool packet independently and promote accepted conclusions.
+3. **Remake owner/session, separate #1740 investigation:** pin actual consumers,
+   screen/layout/manual comparison, owner-colour/per-nation variant support,
+   fallback/cache feasibility and newer-scenario gaps. Adapter/theme changes,
+   releases and policy decisions are outside this coordination request.
+
+Acceptance for the proposed static packet: complete known resource counts,
+explicit unavailable/unsupported categories, deterministic order, no leaked
+media, preserved masks/colour roles, and a crosswalk that distinguishes direct
+substitution from conversion and runtime-compositing requirements. If static
+evidence cannot settle a point, list a separate bounded rendering proposal;
+there is no authorization here for executing that proposal.
+
+## Relay and END checkpoint
+
+Verified sender/recipient: `ic2-research`, thread
+`01a1b703-eaf9-7dc1-84d7-4b3e0aad6a30`, research checkout. Read its actual owner
+request to communicate with conquest and its reply request in the inbound relay.
+Repo relay-to-research procedure read; this is a coordination reply rather than
+a new scientific finding. The first attempted reply included private backup/CAS
+paths and was rejected by automatic approval review, citing recipient scope and
+private-path disclosure. It was not delivered. No relay baseline advanced.
+Prepare a public-references-only reply after publishing this hand-back; do not
+work around a second rejection or claim delivery without a successful result.
+
+No new findings on main since this turn's `f71c70ff` source baseline. This
+coordination note does not establish a new last-delivered findings baseline.
+Implementation/extraction remains proposed, pending agreed ownership and scope.
