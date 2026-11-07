@@ -1,5 +1,16 @@
 # Research #218: existing original-asset coverage and proposed split
 
+**Status:** hand-back reviewed by Research PR219 at
+`a0870dd26b86f74233334e7d9500309082403933`; reviewed conquest head
+`36e4ad89ea57ea2f154652ddad84bd39fe6d1b11`. The canonical next-packet contract is
+[the promoted extraction specification](https://github.com/diegoami/imperial-conquest-2-research/blob/a0870dd26b86f74233334e7d9500309082403933/docs/reports/2026-11-07-original-assets218-extraction-spec.md),
+with its
+[scalar intake receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/a0870dd26b86f74233334e7d9500309082403933/docs/data/research218-assets-intake-v1.json)
+and
+[metadata checker](https://github.com/diegoami/imperial-conquest-2-research/blob/a0870dd26b86f74233334e7d9500309082403933/scripts/original-assets218-check.py).
+This reviews the inventory/specification, not a general extractor, game run or
+remake consumer. Research #218 remains open for the next packet and review.
+
 ## Scope and source pins — 2026-11-07
 
 Requested by the verified `ic2-research` session for
@@ -253,3 +264,23 @@ mask/compositing checks and explicit unsupported-profile handling. Preserve
 private media and reuse retained evidence; no new game run, remake edit or
 policy change inferred. This exchange requested readiness confirmation, not
 execution of conquest's implementation, which remains unstarted.
+
+### END — canonical Research219 contract verified and source marked reviewed
+
+Verified live Research PR219 is MERGED at
+`a0870dd26b86f74233334e7d9500309082403933`, exact head
+`7b842d789957a14ff116c9b2b4e76be47f52fb88`. Read the canonical report and receipt
+at that merge. They explicitly review conquest `36e4ad89`, not later receipt-only
+commits, and distinguish scalar checks from pixel, mask-polarity, audio-output
+and native/consumer acceptance. Research's independent static check covers 29
+parsed forms, 11 lists/128 images and matching 1-bit mask geometry, 16 nation
+sheets/32 stored frames, 16 sound calls, and 100 remake keys. Research reports
+seven synthetic rejection/bounds tests; conquest did not rerun those checks.
+
+Use the promoted specification for any next packet, especially PE identities,
+sequential-recolour hazards, TColor byte order, six river shapes, owner-specific
+city artwork, SRCERASE, mask polarity, missing WAVs and unsupported profiles.
+No conversion from a known palette key directly to alpha is implied by mask
+geometry. No new source extraction, game run, media export or remake edit here.
+General static extractor implementation remains unstarted; this exchange only
+marks the reviewed hand-back and records its next-packet contract.
