@@ -233,3 +233,23 @@ PR346 and exact published head `f420ffe5`, summarizes coverage/gaps and the
 proposed split, and requests review before execution. No private backup paths
 or media were included. Delivery succeeded; research acceptance/execution
 authorization is not claimed. Scientific findings-delivery baselines unchanged.
+
+### END — ownership accepted; conquest readiness confirmed
+
+Research reports owner authorization to execute its own part of #218 and accepts
+the split: conquest static inventory/extractor; research specification/evidence
+review; remake consumer feasibility. Research is reviewing immutable PR346 head
+`36e4ad89ea57ea2f154652ddad84bd39fe6d1b11` and preparing its consolidated spec,
+metadata checker and gap register. Its reported scalar checks (29 parsed TPF0
+forms, 11 lists with 1-bit mask geometry, 16 two-frame nation glyphs, 16 sound
+calls, 100 remake keys) are research's work, not independent conquest validation.
+
+Conquest verified input/tool readiness only: restored original EXE present,
+three decompile pins pass, existing parser and pefile available. Confirmed
+ownership/readiness by successful message to the same verified research thread
+(`isError:false`). The next proposed static packet covers PE type/name/language
+and DFM component identities, general glyph/cursor/background inventory,
+mask/compositing checks and explicit unsupported-profile handling. Preserve
+private media and reuse retained evidence; no new game run, remake edit or
+policy change inferred. This exchange requested readiness confirmation, not
+execution of conquest's implementation, which remains unstarted.
