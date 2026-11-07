@@ -399,3 +399,32 @@ Reviewer attribution: this was the separate Codex `ic2-research` session's code
 review and static reproduction, not a claimed different-model/provider verdict.
 Its final disposition is retained above; the actual decoder/test reproduction
 results are distinct from any assertion of model independence.
+
+## END — extractor merged, research acceptance promoted, main handoff ready
+
+Implementation PR346 merged at
+`c32d4bebfb8fb5224b809d798fdf920cd8a6d7d8`, final head
+`3a327cd85d048e3f4a4db3a5a9c38fde555ac69e`. GitGuardian succeeded; merge state
+was clean/mergeable and no unresolved PR reviews existed. Separate research
+review/disposition is retained in PR346 comment6712211656. Readback of the tool
+from the actual merge matches reviewed version1.0.1/SHA5d266a07... exactly.
+All local-only cleanup/readiness notes and unrelated untracked files preserved.
+No findings/ changes since the source main baseline; no scientific relay baseline
+advanced for this code-and-metadata delivery.
+
+Delivered the landed merge, unchanged reviewed source/hash and main prompt to
+verified research thread successfully (`isError:false`). Research has now
+published durable acceptance in merged PR220 at
+`71414df8c96b702a8d8bcb7a34bee6b864e4410d`. Verified live merge and read the full
+canonical `docs/progress/research218-extractor-review.md` and scalar
+`docs/data/research218-extractor-review-v1.json` at that commit. They accept exact
+source `1544d666c45004f1eda362cb84a4701e0e4143d2`, 36 tests, the corrected v5
+metadata and 362 byte-identical verified payloads, with consumer/runtime/native
+limits retained. No later code change occurred.
+
+Main retrieval/shipping prompt and guide now link the promoted acceptance.
+Direct delivery to the PowerShell/remake session was not claimed; the owner
+carries `docs/notes-for-main-session-assets218.md`, with exact source/hash.
+Conquest's static tool implementation and research review are complete. Main
+owns retrieving and packaging the tool/runtime and validating actual consumers;
+no remake integration, game run, media release or new task was started.

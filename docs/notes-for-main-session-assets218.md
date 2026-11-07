@@ -30,6 +30,12 @@ Original/extracted media stays private and user-supplied; only the tool ships.
 Canonical extraction contract: Research PR219, merge
 a0870dd26b86f74233334e7d9500309082403933,
 docs/reports/2026-11-07-original-assets218-extraction-spec.md.
+Promoted tool acceptance: Research PR220, merge
+71414df8c96b702a8d8bcb7a34bee6b864e4410d,
+docs/progress/research218-extractor-review.md and
+docs/data/research218-extractor-review-v1.json.
+Implementation landed in conquest main via PR346 at
+c32d4bebfb8fb5224b809d798fdf920cd8a6d7d8; the reviewed tool hash is unchanged.
 Conquest code is reviewed; full original-art adapter/UI/native acceptance is not.
 ```
 
