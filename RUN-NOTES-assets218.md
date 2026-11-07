@@ -311,3 +311,15 @@ measured output or save, even to regenerate it; every output uses a unique name.
 Keep new scalar measurements under `runs/experiments/data/run-exp-assets218/`;
 private media outside Git and public releases. No games or prior pixel probes
 are rerun. Preserve unrelated untracked cleanup/readiness notes.
+
+First implementation checkpoint: self-contained stdlib PE/DFM parser and indexed
+bitmap/list/glyph conversion, native ICO/CUR reconstruction, explicit compositing
+helpers and semantic crosswalk, PCM WAV validation and private export, atomic
+no-overwrite publication and versioned metadata. 29 synthetic tests pass,
+including an isolated copied-tool CLI. New metadata-only original check
+`extractor-initial-v1.json` retained: 73 resources, 29 forms, 11 lists/128 images,
+63 glyph sheets/79 frames and 10 resource bitmaps; zero diagnostics, WAVs absent
+as expected for that explicit input directory. Native cursor/icon reconstruction
+is still tagged partial for consumer-compositing acceptance. Next: stricter
+malformed-group tests, supplied WAV/private-export validation and main delivery
+documentation. No original pixels were written by this initial metadata check.
