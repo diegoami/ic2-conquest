@@ -1,0 +1,14 @@
+{
+  "extractor_version": "1.0.1",
+  "extractor_sha256": "5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5",
+  "all_private_output_hashes_verified": 362,
+  "payloads_byte_identical_to_externally_validated_v3_receipt": true,
+  "changed_successful_scan_fields": [
+    "cache_identity",
+    "extractor_sha256",
+    "extractor_version"
+  ],
+  "static_validation": "passed-static",
+  "regression_suite_tests": 36,
+  "review_fix": "WAV filesystem exceptions use stable class/errno without absolute paths"
+}

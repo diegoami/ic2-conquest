@@ -1,0 +1,21 @@
+{
+  "remake_pin": "55bd7fcef91e41b179a6df9851384bb687932e8e",
+  "core_keys": 75,
+  "battle_keys": 25,
+  "candidate_keys_in_manifest": 89,
+  "invalid_candidate_keys": [],
+  "consumer_keys_without_proposed_source_mapping": [
+    "terrain.desert.surface",
+    "terrain.forest.surface",
+    "terrain.mountain.surface",
+    "terrain.plain.surface",
+    "terrain.sea_open.surface",
+    "terrain.sea_shallow.surface",
+    "unit.archers.icon",
+    "unit.heavy_cavalry.icon",
+    "unit.heavy_infantry.icon",
+    "unit.light_cavalry.icon",
+    "unit.light_infantry.icon"
+  ],
+  "scope": "candidate crosswalk only; consumer use, owner/river variants and artwork suitability remain separate"
+}

@@ -1,0 +1,40 @@
+test_atomic_publication_refuses_overwrite_and_leaves_no_temp (tests.test_original_assets.AudioAndPublicationTests.test_atomic_publication_refuses_overwrite_and_leaves_no_temp) ... ok
+test_audio_export_preserves_supplied_file (tests.test_original_assets.AudioAndPublicationTests.test_audio_export_preserves_supplied_file) ... ok
+test_cache_identity_changes_with_audio_content (tests.test_original_assets.AudioAndPublicationTests.test_cache_identity_changes_with_audio_content) ... ok
+test_cli_is_independent_of_repository (tests.test_original_assets.AudioAndPublicationTests.test_cli_is_independent_of_repository) ... ok
+test_cli_rejects_media_in_git_checkout (tests.test_original_assets.AudioAndPublicationTests.test_cli_rejects_media_in_git_checkout) ... ok
+test_explicit_missing_wav_root_diagnostic (tests.test_original_assets.AudioAndPublicationTests.test_explicit_missing_wav_root_diagnostic) ... ok
+test_full_static_mapping_audio_inventory (tests.test_original_assets.AudioAndPublicationTests.test_full_static_mapping_audio_inventory) ... ok
+test_malformed_pcm_chunks_and_headers (tests.test_original_assets.AudioAndPublicationTests.test_malformed_pcm_chunks_and_headers) ... ok
+test_missing_case_duplicate_and_symlink (tests.test_original_assets.AudioAndPublicationTests.test_missing_case_duplicate_and_symlink) ... ok
+test_pcm_formats_and_padding (tests.test_original_assets.AudioAndPublicationTests.test_pcm_formats_and_padding) ... ok
+test_supported_cli_media_and_glyph_key (tests.test_original_assets.AudioAndPublicationTests.test_supported_cli_media_and_glyph_key) ... ok
+test_unknown_exe_never_exports_audio (tests.test_original_assets.AudioAndPublicationTests.test_unknown_exe_never_exports_audio) ... ok
+test_unsupported_pcm (tests.test_original_assets.AudioAndPublicationTests.test_unsupported_pcm) ... ok
+test_depth_padding_orientation_and_channel_order (tests.test_original_assets.BitmapTests.test_depth_padding_orientation_and_channel_order) ... ok
+test_dib_resource (tests.test_original_assets.BitmapTests.test_dib_resource) ... ok
+test_missing_palette_entry (tests.test_original_assets.BitmapTests.test_missing_palette_entry) ... ok
+test_offsets_and_dimensions (tests.test_original_assets.BitmapTests.test_offsets_and_dimensions) ... ok
+test_png_valid_rows (tests.test_original_assets.BitmapTests.test_png_valid_rows) ... ok
+test_recolour_is_single_pass_and_preserves_nonmarkers (tests.test_original_assets.BitmapTests.test_recolour_is_single_pass_and_preserves_nonmarkers) ... ok
+test_spare_cells_and_mask (tests.test_original_assets.BitmapTests.test_spare_cells_and_mask) ... ok
+test_srcerase_and_mask_truth_tables (tests.test_original_assets.BitmapTests.test_srcerase_and_mask_truth_tables) ... ok
+test_truncated_header_palette_and_pixels (tests.test_original_assets.BitmapTests.test_truncated_header_palette_and_pixels) ... ok
+test_unsupported_encoding (tests.test_original_assets.BitmapTests.test_unsupported_encoding) ... ok
+test_command_mapping_is_scoped_and_complete_for_existing_keys (tests.test_original_assets.ResourceTests.test_command_mapping_is_scoped_and_complete_for_existing_keys) ... ok
+test_dfm_binary_nested_and_duplicate_guard (tests.test_original_assets.ResourceTests.test_dfm_binary_nested_and_duplicate_guard) ... ok
+test_dfm_unsupported_not_silently_absent (tests.test_original_assets.ResourceTests.test_dfm_unsupported_not_silently_absent) ... ok
+test_inventory_extracts_frames_with_exact_identity (tests.test_original_assets.ResourceTests.test_inventory_extracts_frames_with_exact_identity) ... ok
+test_malformed_asset_fails_validation (tests.test_original_assets.ResourceTests.test_malformed_asset_fails_validation) ... ok
+test_named_ids_languages_and_bounds (tests.test_original_assets.ResourceTests.test_named_ids_languages_and_bounds) ... ok
+test_native_cursor_container (tests.test_original_assets.ResourceTests.test_native_cursor_container) ... ok
+test_pe_truncation_and_rva_rejection (tests.test_original_assets.ResourceTests.test_pe_truncation_and_rva_rejection) ... ok
+test_profile_gate_no_decode_or_media (tests.test_original_assets.ResourceTests.test_profile_gate_no_decode_or_media) ... ok
+test_resource_cycle (tests.test_original_assets.ResourceTests.test_resource_cycle) ... ok
+test_resource_overlap_and_duplicate_identity (tests.test_original_assets.ResourceTests.test_resource_overlap_and_duplicate_identity) ... ok
+test_semantic_order_and_special_cases (tests.test_original_assets.ResourceTests.test_semantic_order_and_special_cases) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.177s
+
+OK
