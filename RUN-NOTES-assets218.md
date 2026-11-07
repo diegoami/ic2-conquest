@@ -375,3 +375,22 @@ ones and their newly written hashes verify. All older receipts/media retained.
 New portable source SHA-256:
 `5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`.
 Research recheck requested before calling this corrected packet reviewed.
+
+### END — corrected static extractor independently qualified
+
+Research delivered a complete disposition on exact conquest source
+`1544d666c45004f1eda362cb84a4701e0e4143d2`, version 1.0.1, SHA-256
+`5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`:
+all 36 tests passed in isolation; copied-tool CLI reproduced v5 metadata exactly;
+362 freshly written payloads hash-verified and match the previously independently
+decoded files. Only version/source hash/cache identity changed from the original
+candidate. The path-disclosure finding is resolved; no remaining blocker to the
+qualified static extractor. Native composition, consumers and packaging remain
+separate. Research is publishing its durable review/receipt; do not invent its
+publication SHA before verifying it.
+
+Added a paste-ready main retrieval/shipping prompt at
+`docs/notes-for-main-session-assets218.md`, naming the exact reviewed code pin,
+source SHA, Python runtime boundary and remaining main-session integration work.
+Later status/handoff edits do not change the reviewed extractor file. No source
+code changes after qualification; no additional game or pixel measurements.

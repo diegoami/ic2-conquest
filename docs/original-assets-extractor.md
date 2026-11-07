@@ -4,8 +4,12 @@ The deliverable is [scripts/extract_original_assets.py](../scripts/extract_origi
 a single portable Python 3.10+ standard-library file. Copying that one file is
 sufficient; it has no conquest imports, Wine, Ghidra, pefile or ImageMagick
 dependency. Original/extracted media is private, supplied by the user and never
-distributed with the tool. The current implementation is an author-validated
-candidate; research review and actual remake integration are separate gates.
+distributed with the tool. Research independently qualified tool 1.0.1 at
+`1544d666c45004f1eda362cb84a4701e0e4143d2` for this supported static profile.
+Actual remake integration, native composition and runtime packaging remain separate.
+
+Reviewed tool SHA-256:
+`5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5`.
 
 Canonical contract: Research PR219 at
 `a0870dd26b86f74233334e7d9500309082403933`,
@@ -144,6 +148,6 @@ Original validation receipts live under
 `runs/experiments/data/run-exp-assets218/`. Old versions remain immutable; the
 running notes identify the final code/content pin and receipts to review.
 Private exports and their hashes stay outside public git and releases.
-Research independently reviews the extractor packet; main separately validates
+Research independently reviewed the extractor packet; main separately validates
 actual installation discovery, loading/fallback, crisp scaling, per-owner/river
 support and screen consumers before shipping an original-assets option.
