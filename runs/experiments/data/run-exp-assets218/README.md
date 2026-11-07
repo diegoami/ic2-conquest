@@ -35,6 +35,9 @@ receipt/media-directory names. Older receipt versions remain immutable.
 - `extractor-isolated-v4.json` and `isolation-and-overwrite-validation-v1.json`:
   exact copied tool run with Python `-I` outside the repository; existing private
   export refused without altering any of its 362 payloads. Same tool hash as v3.
+- `key-crosswalk-validation-v1.json`: all 89 distinct proposed keys exist in the
+  pinned 100-key remake union. Six surface and five generic unit-icon keys have
+  no proposed mapping; owner/river suitability is not implied by key existence.
 
 The current tool SHA-256 is
 `558bdb331e451c47b209c8c85ff77cb5a03d874a3e3b826e846e75f2a42f407c`.
