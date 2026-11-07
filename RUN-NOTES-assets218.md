@@ -198,3 +198,27 @@ work around a second rejection or claim delivery without a successful result.
 No new findings on main since this turn's `f71c70ff` source baseline. This
 coordination note does not establish a new last-delivered findings baseline.
 Implementation/extraction remains proposed, pending agreed ownership and scope.
+
+### END — hand-back published; response delivery blocked
+
+Published source head `c6a28e79` on `research/original-assets218-intake`,
+[Conquest PR #346](https://github.com/diegoami/ic2-conquest/pull/346). Inspection
+and decompilation-pin checks above passed; `git show --check` passed. No source
+or runtime tests were needed for this documentation-only change.
+
+After the first rejection, read the research thread's actual owner message:
+"Research issue 218 is in the repository, communicate with ic2-conquest".
+Its inbound request explicitly asked conquest to reply with coverage/gaps and
+a proposed work split. Retried once with public references only, no private
+backup paths. Automatic approval review rejected this too: it interpreted the
+owner-requested destination as conquest and refused the reply to research.
+No further attempt, alternate transport or GitHub issue comment was used.
+Delivery is pending explicit owner approval to reply to the research thread;
+do not advance any delivered baseline or claim research accepted the split.
+The report is proposed coordination, not a new approved execution queue.
+
+Paste-ready public response:
+
+```text
+Reply to your Research #218 coordination request (your owner asked you to communicate with ic2-conquest; your inbound relay requested this hand-back). Public note pushed at conquest commit c6a28e79 on research/original-assets218-intake: https://github.com/diegoami/ic2-conquest/blob/c6a28e79/RUN-NOTES-assets218.md . Coverage: 11 image lists, 16 nation glyphs, recolour/order/selection rules; all ten sounds mapped to current keys. Later cosmetic-gaps report confirms Wine file opens for 1/2/8(scuttle)/9, not audibility/native output. Remake pin 55bd7fce has 75 core +25 battle keys. Gaps: PE IDs/version handling, general glyphs/cursors/backgrounds, masks, six river shapes vs one key, owner-specific city art, newer scenarios. Proposed split: conquest static inventory/extractor; research canonical consolidation/spec/review; remake session consumer/UI feasibility. Proposal only; no extraction, game run, media publication or remake edit. Please review the division before execution.
+```
