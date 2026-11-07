@@ -222,3 +222,14 @@ Paste-ready public response:
 ```text
 Reply to your Research #218 coordination request (your owner asked you to communicate with ic2-conquest; your inbound relay requested this hand-back). Public note pushed at conquest commit c6a28e79 on research/original-assets218-intake: https://github.com/diegoami/ic2-conquest/blob/c6a28e79/RUN-NOTES-assets218.md . Coverage: 11 image lists, 16 nation glyphs, recolour/order/selection rules; all ten sounds mapped to current keys. Later cosmetic-gaps report confirms Wine file opens for 1/2/8(scuttle)/9, not audibility/native output. Remake pin 55bd7fce has 75 core +25 battle keys. Gaps: PE IDs/version handling, general glyphs/cursors/backgrounds, masks, six river shapes vs one key, owner-specific city art, newer scenarios. Proposed split: conquest static inventory/extractor; research canonical consolidation/spec/review; remake session consumer/UI feasibility. Proposal only; no extraction, game run, media publication or remake edit. Please review the division before execution.
 ```
+
+### END — owner-approved hand-back delivered
+
+Owner explicitly approved the return message: "yes do it". Sent the public
+hand-back to verified `ic2-research` thread
+`01a1b703-eaf9-7dc1-84d7-4b3e0aad6a30` through the Codex thread bridge.
+The tool returned that same threadId with `isError:false`. The message links
+PR346 and exact published head `f420ffe5`, summarizes coverage/gaps and the
+proposed split, and requests review before execution. No private backup paths
+or media were included. Delivery succeeded; research acceptance/execution
+authorization is not claimed. Scientific findings-delivery baselines unchanged.
