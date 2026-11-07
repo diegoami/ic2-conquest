@@ -16,7 +16,7 @@ single file has no conquest or third-party imports. It needs Python 3.10+;
 main must explicitly arrange the runtime to ship it, or port the tested contract
 into .NET. Do not assume a player's machine already has Python.
 
-Research independently qualified the static extractor: isolated tests, exact
+A separate research session qualified the static extractor: isolated tests, exact
 original metadata reproduction, PNG decoding and 362 private output hashes.
 The tool inventories PE/DFM assets, emits versioned metadata, optionally writes
 private PNG/CUR/ICO/WAV files and refuses to overwrite existing outputs.

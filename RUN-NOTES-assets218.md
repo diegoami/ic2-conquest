@@ -394,3 +394,8 @@ Added a paste-ready main retrieval/shipping prompt at
 source SHA, Python runtime boundary and remaining main-session integration work.
 Later status/handoff edits do not change the reviewed extractor file. No source
 code changes after qualification; no additional game or pixel measurements.
+
+Reviewer attribution: this was the separate Codex `ic2-research` session's code
+review and static reproduction, not a claimed different-model/provider verdict.
+Its final disposition is retained above; the actual decoder/test reproduction
+results are distinct from any assertion of model independence.
