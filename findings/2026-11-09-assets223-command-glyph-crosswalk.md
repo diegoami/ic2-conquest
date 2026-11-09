@@ -1,6 +1,8 @@
 # Toolbar glyphs → remake command keys; glyph transparency; unit icons; area-map lists (research #223)
 
-**Status:** draft from `ic2-conquest`, waiting for ic2-research intake. Answers
+**Status:** promoted 2026-11-09 into imperial-conquest-2-research at `963c58d` (research PR #225, by ic2-research, from `d85154c6`); this draft is kept for history, the research repo is canonical. Research reran the scan (equal to `command-glyphs-v1.json`), checked the 44 keys against the remake manifest at `55bd7fce` and the cited dump lines; pixel decoding and the MapsList tile table were not redone independently. Research corrected cosmetic-gaps §3 and two rows of the #218 spec accordingly, and closed #223. Original status line follows.
+
+**Original status:** draft from `ic2-conquest`, waiting for ic2-research intake. Answers
 [research #223](https://github.com/diegoami/imperial-conquest-2-research/issues/223) (parent #218), which blocks
 diegoami/imperial_conquest_2#1850. It builds on `docs/reports/2026-11-07-original-assets218-extraction-spec.md` and the
 accepted extractor (conquest `1544d666`, v1.0.1, whose `glyph_semantic` tables hold the same 44 candidates).
