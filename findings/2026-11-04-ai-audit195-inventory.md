@@ -66,15 +66,15 @@ Short names:
 
 | area | rows | MATCH | DIFF | AMB | MISSING | APPR | AUTH | UNAUD |
 |---|---|---|---|---|---|---|---|---|
-| A: seat loop, scheduling, draws, authored automation | 43 | 12 | 4 | 13 | 0 | 3 | 8 | 3 |
+| A: seat loop, scheduling, draws, authored automation | 43 | 13 | 4 | 12 | 0 | 3 | 8 | 3 |
 | B: economy, recruitment, mercenaries, supply | 35 | 17 | 3 | 9 | 0 | 1 | 2 | 3 |
 | C: army phase | 34 | 21 | 2 | 3 | 1 | 1 | 2 | 4 |
 | D: fleets | 33 | 19 | 1 | 9 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
 | F: tactical AI and battle transitions | 43 | 30 | 1 | 3 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **119** | **14** | **50** | **2** | **7** | **22** | **15** |
+| **total** | **229** | **120** | **14** | **49** | **2** | **7** | **22** | **15** |
 
-Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)". After C22/C23 (`2026-11-05-audit195-c22-c23-stays.md`): C22 from AMB to MATCH (measured scope).
+Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)". After C22/C23 (`2026-11-05-audit195-c22-c23-stays.md`): C22 from AMB to MATCH (measured scope). After research's analysis of the final hook runs (`R/2026-11-05-audit195-final-hooks.md`, 2026-11-05, folded in 2026-11-09): C22 MATCH (iv) with the recursion attributed; the own-capital stays measured as diplomacy draws, so A10 goes from AMB to MATCH (measured scope); the late fleet rows placed under D19.
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -156,13 +156,14 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **diplomacy draws, the leading reading** (the remake declares war or allies in the seat, the original does not; 9 rows; the FB7C hook run settles it; `2026-11-05-audit195-c22-c23-stays.md`) |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | E (FB7C draws) | **diplomacy draws, measured** (FB7C hook on the 8 starts: in 8 of 9 rows the original's search found the remake's target and its 1-in-10 roll missed; Rome t10 is downstream of Greece's missed roll; Carthage t35's alliance search itself was not logged; `R/2026-11-05-audit195-final-hooks.md` §2) |
 | Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
 | Celtiberia t15/t17 (Pella capital army) | A18 war-roll stream, or X1 | candidate |
 | Celtiberia t37 (0-move army at Ambracia) | C22, or state | candidate |
-| Late-year AI-phase differences (266–264 BC) | all areas | not classified |
+| Late-year AI-phase differences (266–264 BC) | all areas | classified by step 7 (`2026-11-05-audit195-step7-late-years.md`: 94 draws or consequences, 53 human phase, 7 human battles, 68 quiet candidates) |
+| Carthage game t127–t130: Celtiberia fleet 6, Ptolemaic fleet 5 | D19 | **stored-route difference, writer not identified** (F608 agrees given its inputs; the route is written outside F608; next probe: hook the route writers, rendezvous and CD08, in t129–t130; `R/2026-11-05-audit195-final-hooks.md` §3) |
 
 ## The matrix
 
@@ -182,7 +183,7 @@ area, its cross-reference is in the X list above.
 | A07 | Phase order: diplomacy, economy, armies, fleets | FA20 | AiTurn.Run (economy first; diplomacy inside the scored loop) | i, ii (both sides) | DIFF | **X1** | none |
 | A08 | Armies one at a time in table order, count latched at 0x44F32F | F31C | OriginalArmyOrder (T253) | iv (R/2026-10-31-army-order-within-a-seat: 678/679, at 8e2d9053) | MATCH | — | mirror |
 | A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only with Tactical human battles, a living human seat and no watch mode (GameSession 2398) | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
-| A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences) | AMB | 10 own-capital stays open | mirror |
+| A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences; the 10 own-capital stays measured as diplomacy draws, `R/2026-11-05-audit195-final-hooks.md` §2) | MATCH (measured scope) | — | mirror |
 | A11 | Phase-mode flag DAT_004a0340 (0 armies, 1 fleets) | F31C/F608 | none | i | UNAUD | Readers not traced | none |
 | A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake; iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant, no replay: 3 of 5 seats differ) | **X3**; no interruption under Instant | mirror |
 | A13 | The replayed pass draws fresh Random values and reruns the economy | FA20 second call | named streams per (nation, turn) | ii (remake code) | UNAUD | **X3**: the same draws repeat; x3: no roll fired in 30 runs, still unmeasured | none |
@@ -283,7 +284,7 @@ area, its cross-reference is in the X list above.
 | C19 | DBA8 walk (CB40, D174, CEC8, recursion) | DBA8 | MoveArmyCommandHandler; ClassicalArmyNavigation | iv (3,303 + 44,734 emulator cases; in-play rows) | MATCH | D174 unbounded recursion: the remake drops the march | mirror |
 | C20 | Stale DBA8 word suppression | DB38 0x44DB47 | inheritFailedIntermediate (T276/T277) | iv (v0.9.4 recheck) | MATCH (measured scope) | Greece (112,70), Numidia t24–25 not hook-confirmed | mirror |
 | C21 | D734 end check at the measured callers | D734 0x44D895–98C | OriginalArmyWalkContact; EndCheck | iv (v0.9.1: 17 → 0) | MATCH | — | mirror |
-| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii; iv (D734 hook, 80 rounds: no siege or attack at E84C / 0x44F4A3 / 0x44F47C) | MATCH (measured scope) | 37 actions under DBA8 recursion await the v4 attribution (`2026-11-05-audit195-c22-c23-stays.md`) | mirror |
+| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii; iv (D734 hook, 80 rounds: no siege or attack at E84C / 0x44F4A3 / 0x44F47C) | MATCH (iv) | v4 frame walk: the 37 recursion actions go to the army target, capital defence, the city target and the walk at 0x44F4C7, none to the named callers (`R/2026-11-05-audit195-final-hooks.md` §1). Open: whether the remake's mirror of the 0x44F4C7 walk (22 sieges) has a City end check | mirror |
 | C23 | D734 "not at war" city tail: F6D8 resupply at the walk's end | D734 → F6D8 | none (Ruleset.cs acknowledges it) | i, ii; iv (571 tails in 80 rounds; the remake replay ends equal: supplies 293/294, money 294/294, city stock 321/323) | MISSING | No measurable effect: E41C has just filled the army (`2026-11-05-audit195-c22-c23-stays.md`) | none |
 | C24 | D734 land tail (one more step if cost < moves) | D734 tail | MovementWalker | i, ii | UNAUD | Not reached: the land-tail recursion never fired in 80 rounds (`2026-11-05-audit195-c22-c23-stays.md`) | none |
 | C25 | Garrison fallback destination | EBE8 | GarrisonFallback | iv (gap A 410 → 0) | MATCH | Capital −1 edge (C26) | mirror |
@@ -319,7 +320,7 @@ area, its cross-reference is in the X list above.
 | D16 | Failed-search −1 word | D9A8 (a)/(b) | IntermediateSearchFailed (T277) | iv | MATCH | = C20 | mirror |
 | D17 | Ferry route at 0 army moves | DBA8 → D9A8 | ZeroMoveRendezvous | ii, iii | AMB | = C16 | mirror |
 | D18 | Carried army drives its fleet | DBA8 → CD08 | Carried | iv | MATCH | = C17 | mirror |
-| D19 | Stored-route lifetime | route_x +4 | OriginalFleetRoutes (per call) | ii, iii | AMB | **X3** | mirror |
+| D19 | Stored-route lifetime | route_x +4 | OriginalFleetRoutes (per call) | ii, iii | AMB | **X3**; the two late fleet rows (Carthage t127–t130) differ in a stored route written outside F608 (`R/2026-11-05-audit195-final-hooks.md` §3) | mirror |
 | D20 | E1FC move contract | E1FC, D174, CEC8, 939C | OriginalFleetMove | iv partial (24/26) | MATCH | — | discr (emulation) |
 | D21 | 939C returns the fleet's own tile (Thracia fleet 6) | 939C | ReplaceLandTarget | i | AMB | Unexplained; no position difference | none |
 | D22 | D174 unbounded recursion | D174 | FleetIntermediate | i | UNAUD | — | none |
