@@ -2,7 +2,7 @@
 
 **Tag:** [confirmed for the classes from data; derived for the per-row attribution, see Limits]. No new Wine run yet: an
 original-side fleet hook on three of the turns is scheduled (§4).
-**Status:** draft for research.
+**Status:** draft for research. **Update 2026-11-09:** research analysed the final hook runs (conquest PR #345) in `docs/reports/2026-11-05-audit195-final-hooks.md` (research `181a730`), which is canonical for the fleet candidate: at Carthage t127–t130, F608 agrees with the remake given its inputs, and Celtiberia's fleet 6 and Ptolemaic's fleet 5 differ in a stored route written outside F608 (D19), writer not yet identified (§3).
 **Task:** research #195 inventory, pass-1 step 7: "classify the late-year AI-phase differences (266–264 BC) by class".
 Owner 2026-11-05: "ok do step 7 while waiting".
 
