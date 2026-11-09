@@ -1,0 +1,2821 @@
+{
+ "schema": "ic2-assets223/1",
+ "pins": {
+  "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "dump_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "dump_lines": 59228,
+  "extractor_sha256": "5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5",
+  "pins_match": true
+ },
+ "glyphs": [
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areatog",
+   "hint": "Toggle colour",
+   "onclick": "ToggleMap",
+   "handler_symbol": "TAreaMap_ToggleMap",
+   "handler_address": "0x0043dfd4",
+   "field_offsets_named": [
+    "0x1b0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 13,
+   "key_rgb_hex": "ff00ff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 9
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": null,
+   "mapping_status": "unresolved",
+   "image_group": 0
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areacits",
+   "hint": "Show cities",
+   "onclick": "ShowCities",
+   "handler_symbol": "TAreaMap_ShowCities",
+   "handler_address": "0x0043e210",
+   "field_offsets_named": [
+    "0x1b4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_cities.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 1
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areacap",
+   "hint": "Show capital",
+   "onclick": "ShowCapital",
+   "handler_symbol": "TAreaMap_ShowCapital",
+   "handler_address": "0x0043e288",
+   "field_offsets_named": [
+    "0x1b8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_capital.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 2
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areaarms",
+   "hint": "Show armies",
+   "onclick": "ShowArmies",
+   "handler_symbol": "TAreaMap_ShowArmies",
+   "handler_address": "0x0043e31c",
+   "field_offsets_named": [
+    "0x1bc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_armies.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 3
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areaflts",
+   "hint": "Show fleets",
+   "onclick": "ShowFleets",
+   "handler_symbol": "TAreaMap_ShowFleets",
+   "handler_address": "0x0043e3ac",
+   "field_offsets_named": [
+    "0x1c0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_fleets.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 4
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areaalln",
+   "hint": "Show all",
+   "onclick": "ShowAll",
+   "handler_symbol": "TAreaMap_ShowAll",
+   "handler_address": "0x0043e440",
+   "field_offsets_named": [
+    "0x1c4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_all.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 5
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areali",
+   "hint": "Light infantry",
+   "onclick": "ShowMercsLI",
+   "handler_symbol": "TAreaMap_ShowMercsLI",
+   "handler_address": "0x0043e4d8",
+   "field_offsets_named": [
+    "0x1c8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_light_infantry.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 6
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areahi",
+   "hint": "Heavy infantry",
+   "onclick": "ShowMercsHI",
+   "handler_symbol": "TAreaMap_ShowMercsHI",
+   "handler_address": "0x0043e4e0",
+   "field_offsets_named": [
+    "0x1cc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_heavy_infantry.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 7
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areaarch",
+   "hint": "Archers",
+   "onclick": "ShowMercsAr",
+   "handler_symbol": "TAreaMap_ShowMercsAr",
+   "handler_address": "0x0043e4ec",
+   "field_offsets_named": [
+    "0x1d0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_archers.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 8
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_arealc",
+   "hint": "Light cavalry",
+   "onclick": "ShowMercsLC",
+   "handler_symbol": "TAreaMap_ShowMercsLC",
+   "handler_address": "0x0043e4f8",
+   "field_offsets_named": [
+    "0x1d4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_light_cavalry.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 9
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areahc",
+   "hint": "Heavy cavalry",
+   "onclick": "ShowMercsHC",
+   "handler_symbol": "TAreaMap_ShowMercsHC",
+   "handler_address": "0x0043e504",
+   "field_offsets_named": [
+    "0x1d8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_heavy_cavalry.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 10
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_areaallm",
+   "hint": "All mercenaries",
+   "onclick": "ShowMercsAll",
+   "handler_symbol": "TAreaMap_ShowMercsAll",
+   "handler_address": "0x0043e510",
+   "field_offsets_named": [
+    "0x1dc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.show_mercs_all.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 11
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/Panel1/sb_findcity",
+   "hint": "Find a city",
+   "onclick": "UseFindCity",
+   "handler_symbol": "TAreaMap_UseFindCity",
+   "handler_address": "0x0043e51c",
+   "field_offsets_named": [
+    "0x1e8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.find_city.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 12
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_enemyunits",
+   "hint": "Enemy units",
+   "onclick": "EnemyUnitDetails",
+   "handler_symbol": "TBattleMap_EnemyUnitDetails",
+   "handler_address": "0x004378f8",
+   "field_offsets_named": [
+    "0x1d0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.enemy_units",
+   "mapping_status": "mapped",
+   "image_group": 13
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_cancel",
+   "hint": "Cancel selection",
+   "onclick": "CancelSelection",
+   "handler_symbol": "TBattleMap_CancelSelection",
+   "handler_address": "0x00437a60",
+   "field_offsets_named": [
+    "0x1b8",
+    "0x210"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.cancel_selection",
+   "mapping_status": "mapped",
+   "image_group": 14
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_pauses",
+   "hint": "Change pauses",
+   "onclick": "ChangePauses",
+   "handler_symbol": "TBattleMap_ChangePauses",
+   "handler_address": "0x00437aa0",
+   "field_offsets_named": [
+    "0x1bc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.change_pauses",
+   "mapping_status": "mapped",
+   "image_group": 15
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_surrender",
+   "hint": "Surrender",
+   "onclick": "Surrender",
+   "handler_symbol": "TBattleMap_Surrender",
+   "handler_address": "0x00437ad8",
+   "field_offsets_named": [
+    "0x1c0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.surrender",
+   "mapping_status": "mapped",
+   "image_group": 16
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_endturn",
+   "hint": "End turn",
+   "onclick": "EndTurn",
+   "handler_symbol": "TBattleMap_EndTurn",
+   "handler_address": "0x00437a94",
+   "field_offsets_named": [
+    "0x1c4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 322,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.end_turn",
+   "mapping_status": "mapped",
+   "image_group": 17
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_compgen",
+   "hint": "Computer general on",
+   "onclick": "ComputerGeneral",
+   "handler_symbol": "TBattleMap_ComputerGeneral",
+   "handler_address": "0x00437ab8",
+   "field_offsets_named": [
+    "0x1c8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.computer_general",
+   "mapping_status": "mapped",
+   "image_group": 18
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_unitmoves",
+   "hint": "Unit moves",
+   "onclick": "UnitsSetMoves",
+   "handler_symbol": "TBattleMap_UnitsSetMoves",
+   "handler_address": "0x00437718",
+   "field_offsets_named": [
+    "0x1cc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.unit_moves",
+   "mapping_status": "mapped",
+   "image_group": 19
+  },
+  {
+   "form": "TBattleMap",
+   "component": "BattleMap/Panel1/sb_friendlyunits",
+   "hint": "Friendly units",
+   "onclick": "MyUnitDetails",
+   "handler_symbol": "TBattleMap_MyUnitDetails",
+   "handler_address": "0x00437724",
+   "field_offsets_named": [
+    "0x1d4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "battle.toolbar.friendly_units",
+   "mapping_status": "mapped",
+   "image_group": 20
+  },
+  {
+   "form": "TCellAuto",
+   "component": "CellAuto/Panel1/sb_Save",
+   "hint": "Save structure as .BMP",
+   "onclick": "SaveBMP",
+   "handler_symbol": "TCellAuto_SaveBMP",
+   "handler_address": "0x004569c0",
+   "field_offsets_named": [
+    "0x1b0",
+    "0x2fc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 144,
+     "distinct_indices": 5
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": null,
+   "mapping_status": "unresolved",
+   "image_group": 21
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Open",
+   "hint": "Open saved game",
+   "onclick": "OpenGameFile",
+   "handler_symbol": "TPremierForm_OpenGameFile",
+   "handler_address": "0x0045aad4",
+   "field_offsets_named": [
+    "0x2f8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 208,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.open.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 22
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Save",
+   "hint": "Save game position",
+   "onclick": "SaveGameFile",
+   "handler_symbol": "TPremierForm_SaveGameFile",
+   "handler_address": "0x0045ab84",
+   "field_offsets_named": [
+    "0x1b0",
+    "0x2fc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 144,
+     "distinct_indices": 5
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.save.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 21
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Endturn",
+   "hint": "End player's turn",
+   "onclick": "EndTurn",
+   "handler_symbol": "TPremierForm_EndTurn",
+   "handler_address": "0x0045b0a8",
+   "field_offsets_named": [
+    "0x300"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 322,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.end_turn.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 17
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_News",
+   "hint": "News",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x304"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 285,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.news.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 23
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Pols",
+   "hint": "International relations",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x308"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 226,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.relations.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 24
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Tax",
+   "hint": "Taxation",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x30c"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 338,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.taxation.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 25
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Balance",
+   "hint": "Balance sheet",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x310"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 360,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.balance_sheet.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 26
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Newunit",
+   "hint": "Recruit unit",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x314"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 339,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.recruit_unit.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 27
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Newfleet",
+   "hint": "Build fleet",
+   "onclick": "StrategicDecision",
+   "handler_symbol": "TPremierForm_StrategicDecision",
+   "handler_address": "0x0045b2bc",
+   "field_offsets_named": [
+    "0x318"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 337,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.build_fleet.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 28
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Rome",
+   "hint": "Rome",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x31c"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 29
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Carthage",
+   "hint": "Carthage",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x320"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 30
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Seleucid",
+   "hint": "Seleucid",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x324"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 31
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Ptolemaic",
+   "hint": "Ptolemaic",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x328"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 32
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Macedonia",
+   "hint": "Macedonia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x32c"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 33
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Numidia",
+   "hint": "Numidia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x330"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 34
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Gaul",
+   "hint": "Gaul",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x334"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 35
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Greece",
+   "hint": "Greece",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x338"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 36
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Celtiberia",
+   "hint": "Celtiberia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x33c"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 37
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Illyria",
+   "hint": "Illyria",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x340"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 38
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Dacia",
+   "hint": "Dacia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x344"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 39
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Bithynia",
+   "hint": "Bithynia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x348"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 40
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Galatia",
+   "hint": "Galatia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x34c"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 41
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Armenia",
+   "hint": "Armenia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x350"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 42
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Media",
+   "hint": "Media",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x354"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 15,
+   "key_rgb_hex": "ffffff",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 348,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 43
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Thracia",
+   "hint": "Thracia",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x358"
+   ],
+   "num_glyphs": 2,
+   "sheet": [
+    40,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    },
+    {
+     "frame": 1,
+     "key_pixels": 0,
+     "distinct_indices": 2
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "consumer-needs-nation-button",
+   "image_group": 44
+  },
+  {
+   "form": "TPremierForm",
+   "component": "PremierForm/Panel1/sb_Allnations",
+   "hint": "All nations",
+   "onclick": "ChangeNation",
+   "handler_symbol": "TPremierForm_ChangeNation",
+   "handler_address": "0x0045b6f0",
+   "field_offsets_named": [
+    "0x35c"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": true,
+   "group_index": 1,
+   "allow_all_up": true,
+   "candidate_key": null,
+   "mapping_status": "unresolved",
+   "image_group": 45
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_supplyarmy",
+   "hint": "Supply army",
+   "onclick": "SupplyArmy",
+   "handler_symbol": "TUnitMap_SupplyArmy",
+   "handler_address": "0x00446f50",
+   "field_offsets_named": [
+    "0x1d8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 5
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_supply.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 46
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_recruitmercs",
+   "hint": "Recruit mercenaries",
+   "onclick": "RecruitMercenaries",
+   "handler_symbol": "TUnitMap_RecruitMercenaries",
+   "handler_address": "0x00446ff4",
+   "field_offsets_named": [
+    "0x1dc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 5
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_recruit_mercenaries.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 47
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_transferunit",
+   "hint": "Transfer units",
+   "onclick": "ArmyToArmyTransfer",
+   "handler_symbol": "TUnitMap_ArmyToArmyTransfer",
+   "handler_address": "0x00447288",
+   "field_offsets_named": [
+    "0x1e0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_transfer_unit.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 48
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_splitarmy",
+   "hint": "Split army",
+   "onclick": "SplitArmy",
+   "handler_symbol": "TUnitMap_SplitArmy",
+   "handler_address": "0x0044755c",
+   "field_offsets_named": [
+    "0x1e4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_split.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 49
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_joinarmies",
+   "hint": "Join armies",
+   "onclick": "JoinArmies",
+   "handler_symbol": "TUnitMap_JoinArmies",
+   "handler_address": "0x004472fc",
+   "field_offsets_named": [
+    "0x1e8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_join.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 50
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_changeunit",
+   "hint": "Change units",
+   "onclick": "ChangeUnitDetails",
+   "handler_symbol": "TUnitMap_ChangeUnitDetails",
+   "handler_address": "0x00447644",
+   "field_offsets_named": [
+    "0x1ec"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_change_units.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 51
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_disbandarmy",
+   "hint": "Disband army",
+   "onclick": "DisbandArmy",
+   "handler_symbol": "TUnitMap_DisbandArmy",
+   "handler_address": "0x004476ac",
+   "field_offsets_named": [
+    "0x1f0"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.army_disband.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 52
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_supplyfleet",
+   "hint": "Supply fleet",
+   "onclick": "SupplyFleet",
+   "handler_symbol": "TUnitMap_SupplyFleet",
+   "handler_address": "0x004477fc",
+   "field_offsets_named": [
+    "0x1f4"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 5
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_supply.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 53
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_repairfleet",
+   "hint": "Repair fleet",
+   "onclick": "RepairFlt",
+   "handler_symbol": "TUnitMap_RepairFlt",
+   "handler_address": "0x004478c8",
+   "field_offsets_named": [
+    "0x1f8"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_repair.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 54
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_transferships",
+   "hint": "Transfer ships",
+   "onclick": "FleetToFleetTransfer",
+   "handler_symbol": "TUnitMap_FleetToFleetTransfer",
+   "handler_address": "0x004479f4",
+   "field_offsets_named": [
+    "0x1fc"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_transfer_ships.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 55
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_splitfleet",
+   "hint": "Split fleet",
+   "onclick": "SplitFleet",
+   "handler_symbol": "TUnitMap_SplitFleet",
+   "handler_address": "0x00447cac",
+   "field_offsets_named": [
+    "0x200"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_split.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 56
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_joinfleets",
+   "hint": "Join fleets",
+   "onclick": "JoinFleets",
+   "handler_symbol": "TUnitMap_JoinFleets",
+   "handler_address": "0x00447a48",
+   "field_offsets_named": [
+    "0x204"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_join.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 57
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_scuttle",
+   "hint": "Scuttle fleet",
+   "onclick": "ScuttleFleet",
+   "handler_symbol": "TUnitMap_ScuttleFleet",
+   "handler_address": "0x00447e34",
+   "field_offsets_named": [
+    "0x208"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.fleet_scuttle.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 58
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_fortifycity",
+   "hint": "Fortify city",
+   "onclick": "Fortify",
+   "handler_symbol": "TUnitMap_Fortify",
+   "handler_address": "0x00448004",
+   "field_offsets_named": [
+    "0x20c"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 4
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.city_fortify.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 59
+  },
+  {
+   "form": "TUnitMap",
+   "component": "UnitMap/Panel1/sb_cancel",
+   "hint": "Cancel selection",
+   "onclick": "CancelSelection",
+   "handler_symbol": "TUnitMap_CancelSelection",
+   "handler_address": "0x00448170",
+   "field_offsets_named": [
+    "0x1b8",
+    "0x210"
+   ],
+   "num_glyphs": 1,
+   "sheet": [
+    20,
+    20
+   ],
+   "frame": [
+    20,
+    20
+   ],
+   "bpp": 4,
+   "palette_entries": 16,
+   "palette_is_windows16": true,
+   "key_palette_index": 11,
+   "key_rgb_hex": "ffff00",
+   "key_rgb_in_other_slots": [],
+   "frames": [
+    {
+     "frame": 0,
+     "key_pixels": 76,
+     "distinct_indices": 3
+    }
+   ],
+   "visible_in_dfm": false,
+   "group_index": 0,
+   "allow_all_up": false,
+   "candidate_key": "ui.command.cancel_selection.icon",
+   "mapping_status": "candidate-component-correspondence",
+   "image_group": 14
+  }
+ ],
+ "lists": [
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/MapsList",
+   "cell": [
+    320,
+    140
+   ],
+   "sheet": [
+    1280,
+    280
+   ],
+   "count": 2,
+   "colour_bpp": 8,
+   "mask_bpp": 1,
+   "distinct_cells": 2,
+   "field_offsets_named": [
+    "0x1e0"
+   ],
+   "dfm_props": {
+    "Height": 140,
+    "Width": 320,
+    "Top": 32
+   },
+   "cells": [
+    {
+     "index": 0,
+     "mask_opaque": 44800,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "008000": 32584,
+      "808080": 12216
+     },
+     "terrain_vs_colour": {
+      "desert:008000": 11407,
+      "forest:008000": 4749,
+      "marker:008000": 348,
+      "marker:808080": 2,
+      "mountains:008000": 2983,
+      "plain:008000": 11955,
+      "plain:808080": 3,
+      "river:008000": 1142,
+      "sea:808080": 12211
+     }
+    },
+    {
+     "index": 1,
+     "mask_opaque": 44800,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "008000": 12249,
+      "0000ff": 12216,
+      "808000": 11425,
+      "000000": 4777,
+      "800000": 2993,
+      "c0c0c0": 1139,
+      "808080": 1
+     },
+     "terrain_vs_colour": {
+      "desert:808000": 11407,
+      "forest:000000": 4749,
+      "marker:000000": 28,
+      "marker:0000ff": 2,
+      "marker:008000": 293,
+      "marker:800000": 9,
+      "marker:808000": 18,
+      "mountains:800000": 2983,
+      "plain:0000ff": 3,
+      "plain:008000": 11955,
+      "river:008000": 1,
+      "river:800000": 1,
+      "river:808080": 1,
+      "river:c0c0c0": 1139,
+      "sea:0000ff": 12211
+     }
+    }
+   ]
+  },
+  {
+   "form": "TAreaMap",
+   "component": "AreaMap/PointsList",
+   "cell": [
+    8,
+    8
+   ],
+   "sheet": [
+    32,
+    32
+   ],
+   "count": 10,
+   "colour_bpp": 8,
+   "mask_bpp": 1,
+   "distinct_cells": 10,
+   "field_offsets_named": [
+    "0x1e4"
+   ],
+   "dfm_props": {
+    "Height": 8,
+    "Width": 8,
+    "Left": 40,
+    "Top": 32
+   },
+   "cells": [
+    {
+     "index": 0,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 60,
+      "000000": 4
+     }
+    },
+    {
+     "index": 1,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 48,
+      "000000": 16
+     }
+    },
+    {
+     "index": 2,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "000000": 34,
+      "ffffff": 30
+     }
+    },
+    {
+     "index": 3,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "000000": 36,
+      "ffffff": 28
+     }
+    },
+    {
+     "index": 4,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 51,
+      "000000": 13
+     }
+    },
+    {
+     "index": 5,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 51,
+      "000000": 13
+     }
+    },
+    {
+     "index": 6,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 36,
+      "000000": 28
+     }
+    },
+    {
+     "index": 7,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 52,
+      "000000": 12
+     }
+    },
+    {
+     "index": 8,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 44,
+      "000000": 20
+     }
+    },
+    {
+     "index": 9,
+     "mask_opaque": 64,
+     "mask_transparent": 0,
+     "colour_counts": {
+      "ffffff": 64
+     }
+    }
+   ]
+  }
+ ],
+ "dialogs": {
+  "0x452208": "TPolitics",
+  "0x4533cc": "TBalanceSheet",
+  "0x453c44": "TChangeTax",
+  "0x454138": "TArmyRecruits",
+  "0x455600": "TBuildFleet",
+  "0x43d438": "TFindCity",
+  "0x4365bc": "TBattleDelays"
+ },
+ "identical_glyph_images": [
+  [
+   "TBattleMap.sb_cancel",
+   "TUnitMap.sb_cancel"
+  ],
+  [
+   "TBattleMap.sb_endturn",
+   "TPremierForm.sb_Endturn"
+  ],
+  [
+   "TCellAuto.sb_Save",
+   "TPremierForm.sb_Save"
+  ]
+ ],
+ "summary": {
+  "glyph_sheets": 63,
+  "with_candidate_key": 44,
+  "keys": [
+   "battle.toolbar.cancel_selection",
+   "battle.toolbar.change_pauses",
+   "battle.toolbar.computer_general",
+   "battle.toolbar.end_turn",
+   "battle.toolbar.enemy_units",
+   "battle.toolbar.friendly_units",
+   "battle.toolbar.surrender",
+   "battle.toolbar.unit_moves",
+   "ui.command.army_change_units.icon",
+   "ui.command.army_disband.icon",
+   "ui.command.army_join.icon",
+   "ui.command.army_recruit_mercenaries.icon",
+   "ui.command.army_split.icon",
+   "ui.command.army_supply.icon",
+   "ui.command.army_transfer_unit.icon",
+   "ui.command.balance_sheet.icon",
+   "ui.command.build_fleet.icon",
+   "ui.command.cancel_selection.icon",
+   "ui.command.city_fortify.icon",
+   "ui.command.end_turn.icon",
+   "ui.command.find_city.icon",
+   "ui.command.fleet_join.icon",
+   "ui.command.fleet_repair.icon",
+   "ui.command.fleet_scuttle.icon",
+   "ui.command.fleet_split.icon",
+   "ui.command.fleet_supply.icon",
+   "ui.command.fleet_transfer_ships.icon",
+   "ui.command.news.icon",
+   "ui.command.open.icon",
+   "ui.command.recruit_unit.icon",
+   "ui.command.relations.icon",
+   "ui.command.save.icon",
+   "ui.command.show_all.icon",
+   "ui.command.show_armies.icon",
+   "ui.command.show_capital.icon",
+   "ui.command.show_cities.icon",
+   "ui.command.show_fleets.icon",
+   "ui.command.show_mercs_all.icon",
+   "ui.command.show_mercs_archers.icon",
+   "ui.command.show_mercs_heavy_cavalry.icon",
+   "ui.command.show_mercs_heavy_infantry.icon",
+   "ui.command.show_mercs_light_cavalry.icon",
+   "ui.command.show_mercs_light_infantry.icon",
+   "ui.command.taxation.icon"
+  ]
+ }
+}
