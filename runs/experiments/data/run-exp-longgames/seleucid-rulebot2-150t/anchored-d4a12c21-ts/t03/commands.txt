@@ -1,0 +1,17 @@
+#checkpoint a000
+recruit-standing {city:259} heavy_infantry 1200
+#checkpoint a001
+mobilize 6 {newarmy}
+#checkpoint a002
+move {army:4} 221 69
+#checkpoint a003
+move {army:5} 177 40
+#checkpoint a004
+move {army:5} 172 45
+#checkpoint a005
+move {army:5} 169 45
+#checkpoint a006
+transfer-money {army:4} 800
+#checkpoint a007
+end
+#checkpoint a008

@@ -1,0 +1,11 @@
+#checkpoint a000
+mobilize 0 {newarmy}
+#checkpoint a001
+move {army:4} 222 68
+#checkpoint a002
+buy {army:12} {city:259} 250
+#checkpoint a003
+attack-army {army:16} {army:18}
+#checkpoint a004
+end
+#checkpoint a005

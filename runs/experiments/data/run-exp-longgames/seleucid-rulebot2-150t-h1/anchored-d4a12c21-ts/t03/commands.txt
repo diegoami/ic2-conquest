@@ -1,0 +1,13 @@
+#checkpoint a000
+recruit-standing {city:214} heavy_infantry 1200
+#checkpoint a001
+mobilize 0 {newarmy}
+#checkpoint a002
+move {army:0} 222 85
+#checkpoint a003
+buy {army:7} {city:272} 80
+#checkpoint a004
+buy {army:12} {city:214} 20
+#checkpoint a005
+end
+#checkpoint a006
