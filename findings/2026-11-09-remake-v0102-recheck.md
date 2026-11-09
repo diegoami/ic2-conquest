@@ -1,8 +1,8 @@
-# Recheck on remake v0.10.2 (`d4a12c21`): T282's per-army support fixes 37 sampled rows in play; one new rule row, a knock-on of the new walk-end support tail
+# Recheck on remake v0.10.2 (`d4a12c21`): 37 sampled rows fixed in play (the six read ones by T282's per-army support); one new rule row, a knock-on of the new walk-end support tail
 
 **Tag:** [confirmed: anchored remake replays against stored original games, plus a 20-seed sweep per changed row on
 both pins]. The original side is the stored Wine games: no new Wine run.
-**Status:** draft for research.
+**Status:** promoted 2026-11-09 into imperial-conquest-2-research (research PR #228, by ic2-research, from `173214b4`); this draft is kept for history, the research repo is canonical. Research recounted the rows, sweep classes, stays, the six AI-log diffs and the t102 error from the receipts; the replays, the sweep and the registry were not re-run. Its three narrowings are carried below (marked "research PR #228").
 **Task:** owner 2026-11-09: recheck on v0.10.2. The remake's T282 (#1782, `4816a301`) fixes five #195 items, X1/#1771,
 X2/#1772, B03/#1773, D05/#1774 and C23/#1775, and asks for "correction commits for researcher rechecks". This is
 that recheck.
@@ -93,9 +93,13 @@ ailog-diffs/]`. Six rows were read:
 | Greece t23, Seleucid army-9 | resupply city (234,60) | resupply city (234,66) |
 | Greece t32, Seleucid army-2 | garrison fallback (220,54) | mercenary run (208,57) |
 
-In each, the only other log difference is where the support/hire pass runs: up front on 168dbc04, per army on
-d4a12c21. So X2's per-army support timing (#1772) changes the target choice, and the new choice matches the original
-in 18–20 of 20 seeds. The other T282 items were not separately seen in these rows. The rate-improved rows (Greece t21
+In each, the other log difference is where the support/hire pass runs: up front on 168dbc04, per army on
+d4a12c21. One exception (research PR #228): in Bithynia t26 Ptolemaic's log the fleet-1 branch also changes, from
+hunt (hunt score 242) to stored-route (hunt −10000), so for that log the support pass is not the only other difference.
+So X2's per-army support timing (#1772) changes the target choice in these six rows, and the new choice matches the
+original in 18–20 of 20 seeds. **The other 31 rule-fixed rows are not attributed** (research PR #228): T282 also moved
+the diplomacy phase, and the pin spans 21 commits, so "X2 fixed in play" holds for the six read rows, and the 37 are
+not all shown to be X2. The rate-improved rows (Greece t21
 fleets 0 → 15; Thracia t38 Carthage, Ptolemaic ×2 5 → 10; Carthage game t70 Seleucid fleets 0 → 12 and t98
 Ptolemaic fleets 0 → 15; Seleucid observer t20 Bithynia 0 → 11) were not read.
 
@@ -137,15 +141,20 @@ same branch, "fleet-4 port, support 1": the port the branch picks changed, not t
 
 | row | before | now |
 |---|---|---|
-| **X2 / C-row "support and hire timing" (#1772)** | remake gap (up-front support pass) | **fixed in play**: 37 sampled gone rows of the stored games now match on ≥ 16/20 seeds; six read rows attributed to the per-army pass |
-| X1 (#1771), B03 (#1773), D05 (#1774) | remake gaps | not separately seen in the sampled rows; not contradicted |
+| **X2 / C-row "support and hire timing" (#1772)** | remake gap (up-front support pass) | **fixed in play for the six read rows**, attributed to the per-army pass; 37 sampled gone rows now match on ≥ 16/20 seeds, the other 31 unattributed (research PR #228) |
+| X1 (#1771) | remake gap | **not confirmed** (research PR #228): X1's own rows (Rome t29, Macedonia t27, Armenia t36) are gone at the anchored seed but same-rate on 20 seeds (0 → 2, 0 → 1, 0 → 2). The war is a 1-in-10 roll, so a seed sweep may not show X1 at all; a sweep with the war forced would |
+| B03 (#1773), D05 (#1774) | remake gaps | corrected in code; not separately seen in the sampled rows; not contradicted |
 | C23 (#1775) | MISSING, no measured effect | **implemented**. One stored turn shows an effect (§3): the tail resupplies an army at a walk end the original does not reach |
 | the 9 diplomacy-draw stays | draws, measured | unchanged (still present, as expected) |
 
 ## Does not establish
 
 - That every one of the 225 gone rows is fixed. 196 long-game gone rows were sampled once per (game, nation): 40 rows.
-- That X1, B03 or D05 changed any stored row. No read row showed them.
+- That X1, B03 or D05 changed any stored row. No read row showed them; X1's own rows are same-rate (research PR #228).
+- That the 31 unread rule-fixed rows are X2's.
+- That the remake's import check is right to reject the t102 save. The asymmetric relation pair was written by the
+  original itself, so the importer's symmetry check is stricter than the original's data: a remake-side issue candidate
+  (research PR #228), not filed from here (rule 2).
 - Draw parity. The sweep compares the remake on both pins against one stored original outcome; it does not sample
   the original.
 - Native Windows behaviour. Everything original is Wine.
